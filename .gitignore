@@ -1,6 +1,6 @@
-# Generated - rebuilt by `calist plan`, never worth committing
-data/plan.json
-data/plan.ics
+# Generated, but committed on purpose: this repo is how the schedule reaches
+# his other devices. plan.ics imports straight into Google Calendar and
+# plan.json lets the dashboard run right after a clone, with no replan.
 data/state.json
 
 # Activity logs - machine-local, can get noisy

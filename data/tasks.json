@@ -83,7 +83,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -93,7 +93,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -137,7 +137,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -147,7 +147,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -191,7 +191,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -201,7 +201,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -245,7 +245,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -255,7 +255,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -299,7 +299,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -309,7 +309,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -407,7 +407,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -417,7 +417,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -461,7 +461,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -471,7 +471,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -515,7 +515,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -525,7 +525,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -569,7 +569,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -579,7 +579,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -623,7 +623,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -633,7 +633,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -677,7 +677,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -687,7 +687,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -731,7 +731,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -741,7 +741,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -785,7 +785,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -795,7 +795,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -839,7 +839,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -849,7 +849,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -893,7 +893,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -903,7 +903,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -947,7 +947,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -957,7 +957,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1001,7 +1001,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1011,7 +1011,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1055,7 +1055,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1065,7 +1065,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1109,7 +1109,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1119,7 +1119,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1163,7 +1163,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1173,7 +1173,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1217,7 +1217,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1227,7 +1227,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1271,7 +1271,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1281,7 +1281,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1433,7 +1433,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1443,7 +1443,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1487,7 +1487,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1497,7 +1497,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1541,7 +1541,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1551,7 +1551,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1595,7 +1595,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1605,7 +1605,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1649,7 +1649,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1659,7 +1659,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1703,7 +1703,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1713,7 +1713,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1757,7 +1757,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1767,7 +1767,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1811,7 +1811,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1821,7 +1821,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1865,7 +1865,7 @@
       },
       {
         "name": "revise-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 1,
@@ -1875,7 +1875,7 @@
       },
       {
         "name": "final",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -1971,7 +1971,7 @@
     "stages": [
       {
         "name": "review-1",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 2,
         "awaits_days": 0,
@@ -1981,7 +1981,7 @@
       },
       {
         "name": "review-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 2,
         "awaits_days": 0,
@@ -2025,7 +2025,7 @@
     "stages": [
       {
         "name": "review-1",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 2,
         "awaits_days": 0,
@@ -2035,7 +2035,7 @@
       },
       {
         "name": "review-2",
-        "minutes": 25,
+        "minutes": 24,
         "status": "todo",
         "gap_days_after": 2,
         "awaits_days": 0,
@@ -2078,8 +2078,18 @@
     "estimate_minutes": 60,
     "stages": [
       {
+        "name": "review-1",
+        "minutes": 20,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
         "name": "review-3",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 1,
         "awaits_days": 0,
@@ -2089,7 +2099,7 @@
       },
       {
         "name": "cram",
-        "minutes": 35,
+        "minutes": 26,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2109,11 +2119,11 @@
     "kind": "schoolwork",
     "school": "Econ",
     "due": "2026-09-01",
-    "estimate_minutes": 45,
+    "estimate_minutes": 20,
     "stages": [
       {
         "name": "work",
-        "minutes": 45,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2133,11 +2143,11 @@
     "kind": "schoolwork",
     "school": "Econ",
     "due": "2026-09-02",
-    "estimate_minutes": 40,
+    "estimate_minutes": 20,
     "stages": [
       {
         "name": "work",
-        "minutes": 40,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2157,11 +2167,11 @@
     "kind": "schoolwork",
     "school": "Econ",
     "due": "2026-09-03",
-    "estimate_minutes": 30,
+    "estimate_minutes": 20,
     "stages": [
       {
         "name": "work",
-        "minutes": 30,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2181,11 +2191,11 @@
     "kind": "schoolwork",
     "school": "Econ",
     "due": "2026-09-09",
-    "estimate_minutes": 40,
+    "estimate_minutes": 20,
     "stages": [
       {
         "name": "work",
-        "minutes": 40,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2208,8 +2218,18 @@
     "estimate_minutes": 60,
     "stages": [
       {
+        "name": "review-1",
+        "minutes": 20,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
         "name": "review-3",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 1,
         "awaits_days": 0,
@@ -2219,7 +2239,7 @@
       },
       {
         "name": "cram",
-        "minutes": 35,
+        "minutes": 26,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2243,7 +2263,7 @@
     "stages": [
       {
         "name": "review-1",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 2,
         "awaits_days": 0,
@@ -2252,8 +2272,18 @@
         "actual_minutes": null
       },
       {
+        "name": "review-2",
+        "minutes": 20,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 8,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
         "name": "review-3",
-        "minutes": 28,
+        "minutes": 22,
         "status": "todo",
         "gap_days_after": 1,
         "awaits_days": 0,
@@ -2263,7 +2293,7 @@
       },
       {
         "name": "cram",
-        "minutes": 39,
+        "minutes": 31,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2337,11 +2367,11 @@
     "kind": "schoolwork",
     "school": "Econ",
     "due": "2026-09-16",
-    "estimate_minutes": 40,
+    "estimate_minutes": 20,
     "stages": [
       {
         "name": "work",
-        "minutes": 40,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2361,11 +2391,11 @@
     "kind": "schoolwork",
     "school": "Econ",
     "due": "2026-09-17",
-    "estimate_minutes": 40,
+    "estimate_minutes": 20,
     "stages": [
       {
         "name": "work",
-        "minutes": 40,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2388,8 +2418,18 @@
     "estimate_minutes": 60,
     "stages": [
       {
+        "name": "review-1",
+        "minutes": 20,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
         "name": "review-3",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 1,
         "awaits_days": 0,
@@ -2399,7 +2439,7 @@
       },
       {
         "name": "cram",
-        "minutes": 35,
+        "minutes": 26,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2423,7 +2463,7 @@
     "stages": [
       {
         "name": "review-1",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 2,
         "awaits_days": 0,
@@ -2432,8 +2472,18 @@
         "actual_minutes": null
       },
       {
+        "name": "review-2",
+        "minutes": 20,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 8,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
         "name": "review-3",
-        "minutes": 28,
+        "minutes": 22,
         "status": "todo",
         "gap_days_after": 1,
         "awaits_days": 0,
@@ -2443,7 +2493,7 @@
       },
       {
         "name": "cram",
-        "minutes": 39,
+        "minutes": 31,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,
@@ -2491,7 +2541,7 @@
     "stages": [
       {
         "name": "review-1",
-        "minutes": 25,
+        "minutes": 20,
         "status": "todo",
         "gap_days_after": 2,
         "awaits_days": 0,
@@ -2500,8 +2550,18 @@
         "actual_minutes": null
       },
       {
+        "name": "review-2",
+        "minutes": 20,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 8,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
         "name": "review-3",
-        "minutes": 28,
+        "minutes": 22,
         "status": "todo",
         "gap_days_after": 1,
         "awaits_days": 0,
@@ -2511,7 +2571,7 @@
       },
       {
         "name": "cram",
-        "minutes": 39,
+        "minutes": 31,
         "status": "todo",
         "gap_days_after": 0,
         "awaits_days": 0,

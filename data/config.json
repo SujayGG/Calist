@@ -3,7 +3,7 @@
   "target_date": "2026-09-22",
   "horizon_days": 130,
   "buffer_days": 2,
-  "min_block_minutes": 25,
+  "min_block_minutes": 20,
   "max_block_minutes": 90,
   "block_gap_minutes": 10,
   "essay_floor_minutes_per_day": 60,
