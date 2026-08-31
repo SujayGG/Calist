@@ -23,6 +23,37 @@ Then open http://127.0.0.1:8787.
 
 On macOS/Linux use `python3 -m calist` instead of `py -m calist`.
 
+## Using it on another device
+
+The repo carries the schedule, so a second machine needs nothing special.
+
+**Just want to see the calendar (2 minutes, no install):**
+1. On GitHub open `data/plan.ics` and click **Download raw file**.
+2. Google Calendar -> gear -> **Settings** -> **Import & export** -> **Import**,
+   pick the file, choose a calendar, import.
+
+Every block lands in your normal calendar, on your laptop and your phone. Re-import
+after a replan to refresh. Times are floating, so they display in your local zone
+with no timezone setup.
+
+**Want the full dashboard:**
+```bash
+git clone https://github.com/SujayGG/Calist.git
+cd Calist
+python3 -m calist serve
+```
+Then open http://127.0.0.1:8787. Needs Python 3.9 or newer — already present on
+macOS and most Linux; on Windows install from python.org and use `py` in place of
+`python3`. There is nothing to `pip install`.
+
+**Keeping two machines in sync.** `tasks.json`, `config.json` and the generated
+plan are all committed, so:
+```bash
+git pull            # before you start working
+git add -A && git commit -m "log progress" && git push   # when you finish
+```
+Skip that and the two machines will disagree about what you have done.
+
 ## What makes it different
 
 **It models the friction.** Anchors (school, clubs, gym, dinner, the call with
