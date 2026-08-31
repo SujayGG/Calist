@@ -305,6 +305,19 @@ def plan(
     by_id = {t.id: t for t in tasks}
     parts_by_task = build_parts([t for t in tasks if not t.done], cfg, multipliers)
 
+    # Stages already finished on a given date count against that day's cadence.
+    # Without this, drafting an essay this afternoon and logging it would still
+    # leave the planner scheduling another draft the same day.
+    already_done: dict[str, dict[str, int]] = {}
+    for task in tasks:
+        if task.tier != 2:
+            continue
+        for stage in task.stages:
+            if stage.done and stage.done_date:
+                day_key = stage.done_date[:10]
+                already_done.setdefault(day_key, {})
+                already_done[day_key][stage.name] = already_done[day_key].get(stage.name, 0) + 1
+
     # Per-task cursor: which part comes next, and the earliest date it may run.
     cursor: dict[str, int] = {tid: 0 for tid in parts_by_task}
     available: dict[str, dt.date] = {
@@ -380,7 +393,7 @@ def plan(
         canvas = _DayCanvas(windows, gap, hour_scores)
         capacity = canvas.remaining
         placed_today = 0
-        day_counts: dict[str, int] = {}
+        day_counts: dict[str, int] = dict(already_done.get(day.isoformat(), {}))
         week_key = f"{day.isocalendar().year}-W{day.isocalendar().week:02d}"
 
         # Reserve a slice for essays so schoolwork cannot crowd them out

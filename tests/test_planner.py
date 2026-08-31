@@ -260,3 +260,24 @@ class TestPlacementQuality(unittest.TestCase):
         mon = [b for b in blocks_on(result, TODAY) if b.type == "work"]
         self.assertTrue(mon)
         self.assertGreaterEqual(mon[0].start_minutes, minutes_of(parse_time("15:12")))
+
+
+class TestCadenceCountsCompletedWork(unittest.TestCase):
+    def test_a_draft_finished_today_uses_up_todays_draft_slot(self):
+        """Logging today's draft must not free the planner to schedule another."""
+        c = cfg()
+        tasks = essays(6, dt.date(2026, 10, 10), c)
+        tasks[0].stages[0].status = "done"
+        tasks[0].stages[0].done_date = TODAY.isoformat()
+        result = planner.plan(tasks, c, state(), today=TODAY)
+        drafts_today = [b for b in blocks_on(result, TODAY) if b.stage_name == "draft"]
+        self.assertEqual(drafts_today, [], "cadence already spent by the completed draft")
+
+    def test_a_draft_finished_yesterday_does_not_block_today(self):
+        c = cfg()
+        tasks = essays(6, dt.date(2026, 10, 10), c)
+        tasks[0].stages[0].status = "done"
+        tasks[0].stages[0].done_date = (TODAY - dt.timedelta(days=1)).isoformat()
+        result = planner.plan(tasks, c, state(), today=TODAY)
+        drafts_today = [b for b in blocks_on(result, TODAY) if b.stage_name == "draft"]
+        self.assertEqual(len(drafts_today), 1)
