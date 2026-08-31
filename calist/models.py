@@ -136,6 +136,9 @@ class Stage:
     status: str = "todo"
     gap_days_after: int = 0
     awaits_days: int = 0
+    # How near the due date this stage may start. Spaced review is only useful
+    # anchored to the test: a cram session ten days early is not a cram session.
+    start_within_days: int | None = None
     done_date: str | None = None
     actual_minutes: int | None = None
 

@@ -29,12 +29,15 @@ def stages_for(kind: str, estimate: int, cfg: dict[str, Any]) -> list[Stage]:
     coach_latency = int(cfg.get("coach_latency_days", 2))
     floor = int(cfg.get("min_block_minutes", 25))
 
+    tmpl = fit_template(tmpl, estimate, floor)
+
     stages: list[Stage] = []
     for spec in tmpl:
         minutes = max(floor, int(round(estimate * float(spec.get("weight", 1.0)))))
         awaits = spec.get("awaits_days", 0)
-        # An essay draft waits on the coach; that latency is configurable in one place.
-        if kind == "essay" and spec.get("name") == "draft":
+        # Every essay round goes back to the coach, so the latency is applied
+        # wherever the template asks for it - configured in one place.
+        if kind == "essay" and awaits:
             awaits = coach_latency
         stages.append(
             Stage(
@@ -42,9 +45,47 @@ def stages_for(kind: str, estimate: int, cfg: dict[str, Any]) -> list[Stage]:
                 minutes=minutes,
                 gap_days_after=int(spec.get("gap_days_after", 0)),
                 awaits_days=int(awaits),
+                start_within_days=spec.get("start_within_days"),
             )
         )
     return stages
+
+
+def fit_template(tmpl: list[dict], estimate: int, floor: int) -> list[dict]:
+    """Drop stages a small estimate cannot support, keeping the total honest.
+
+    Every stage is floored at min_block_minutes, so a 60-minute quiz spread over
+    four review stages silently became 100 minutes of booked time.
+
+    Which stages go matters enormously and differs by template: a test can lose
+    an early review and still be fine, but an essay must never lose its DRAFT -
+    you cannot revise something you never wrote. So drop the LOWEST-WEIGHT
+    stages, which is correct for both: the test sheds `review-1`, the essay
+    sheds `final`. Surviving stages keep the original order and absorb the
+    dropped weight, so the total estimate is preserved.
+    """
+    if len(tmpl) <= 1 or estimate <= 0:
+        return tmpl
+    keep = max(1, min(len(tmpl), estimate // max(1, floor)))
+    if keep >= len(tmpl):
+        return tmpl
+
+    ranked = sorted(
+        range(len(tmpl)),
+        key=lambda i: (float(tmpl[i].get("weight", 0.0)), -i),
+        reverse=True,
+    )
+    keep_idx = sorted(ranked[:keep])
+    kept = [dict(tmpl[i]) for i in keep_idx]
+    spare = sum(
+        float(tmpl[i].get("weight", 0.0)) for i in range(len(tmpl)) if i not in set(keep_idx)
+    )
+    total = sum(float(spec.get("weight", 0.0)) for spec in kept) or 1.0
+    for spec in kept:
+        spec["weight"] = float(spec.get("weight", 0.0)) + spare * (
+            float(spec.get("weight", 0.0)) / total
+        )
+    return kept
 
 
 def make_task(

@@ -3,7 +3,7 @@ import unittest
 
 from calist import daymodel, planner
 from calist.models import minutes_of, parse_time
-from calist.tasking import make_task
+from calist.tasking import make_task, stages_for
 from tests.helpers import blocks_on, cfg, essays, state
 
 TODAY = dt.date(2026, 8, 31)  # a Monday
@@ -20,7 +20,7 @@ class TestCoachLoop(unittest.TestCase):
         for b in result.blocks:
             if b.stage_name == "draft":
                 drafts.setdefault(b.task_id, b.date)
-            if b.stage_name == "revise":
+            if b.stage_name == "revise-1":
                 revises.setdefault(b.task_id, b.date)
 
         latency = c["coach_latency_days"]
@@ -41,23 +41,23 @@ class TestCoachLoop(unittest.TestCase):
         task.stages[0].status = "done"
         task.stages[0].done_date = TODAY.isoformat()
         result = planner.plan([task], c, state(), today=TODAY)
-        revise = next(b for b in result.blocks if b.stage_name == "revise")
+        revise = next(b for b in result.blocks if b.stage_name == "revise-1")
         gap = (dt.date.fromisoformat(revise.date) - TODAY).days
         self.assertGreaterEqual(gap, c["coach_latency_days"])
 
 
 class TestCadence(unittest.TestCase):
-    def test_at_most_one_draft_and_one_revision_per_day(self):
+    def test_at_most_one_new_draft_per_day(self):
         """Spare capacity must not become five drafts the coach cannot absorb."""
         c = cfg()
         tasks = essays(20, dt.date(2026, 10, 15), c)
         result = planner.plan(tasks, c, state(), today=TODAY)
         per_day = {}
         for b in result.blocks:
-            if b.stage_name in ("draft", "revise"):
-                per_day.setdefault((b.date, b.stage_name), set()).add(b.task_id)
-        for (day, stage), ids in per_day.items():
-            self.assertLessEqual(len(ids), 1, f"{len(ids)} {stage} tasks on {day}")
+            if b.stage_name == "draft":
+                per_day.setdefault(b.date, set()).add(b.task_id)
+        for day, ids in per_day.items():
+            self.assertLessEqual(len(ids), 1, f"{len(ids)} drafts on {day}")
 
     def test_twenty_essays_actually_get_drafted_within_the_horizon(self):
         c = cfg()
@@ -281,3 +281,195 @@ class TestCadenceCountsCompletedWork(unittest.TestCase):
         result = planner.plan(tasks, c, state(), today=TODAY)
         drafts_today = [b for b in blocks_on(result, TODAY) if b.stage_name == "draft"]
         self.assertEqual(len(drafts_today), 1)
+
+
+class TestCoachCapacity(unittest.TestCase):
+    """His coach reviews 1-2 pieces a day. That, not free time, is the limit."""
+
+    def test_total_essay_blocks_per_day_respect_the_coach_cap(self):
+        c = cfg()
+        c["cadence"] = {}                     # let the combined cap do the work
+        c["coach_capacity_per_day"] = 2
+        tasks = essays(25, dt.date(2026, 11, 1), c)
+        result = planner.plan(tasks, c, state(), today=TODAY)
+        per_day = {}
+        for b in result.blocks:
+            if b.kind == "essay":
+                per_day[b.date] = per_day.get(b.date, 0) + 1
+        for day, n in per_day.items():
+            self.assertLessEqual(n, 2, f"{n} essay blocks on {day}, coach caps at 2")
+
+    def test_raising_the_cap_finishes_the_essays_sooner(self):
+        """With room in the horizon the cap governs pace, not total volume."""
+        c = cfg()
+        c["cadence"] = {}
+        c["coach_capacity_per_day"] = 2
+        tasks = essays(25, dt.date(2026, 11, 1), c)
+
+        def last_essay_day(result):
+            return max(b.date for b in result.blocks if b.kind == "essay")
+
+        slow = last_essay_day(planner.plan(tasks, c, state(), today=TODAY))
+        c["coach_capacity_per_day"] = 4
+        fast = last_essay_day(planner.plan(tasks, c, state(), today=TODAY))
+        self.assertLess(fast, slow, "a bigger coach cap should finish earlier")
+
+    def test_schoolwork_still_gets_placed_under_a_small_coach_cap(self):
+        """Regression: the coach cap once shadowed the day's free-minute budget,
+        zeroing the schoolwork allowance so homework was never scheduled."""
+        c = cfg()
+        c["coach_capacity_per_day"] = 2
+        tasks = essays(5, dt.date(2026, 10, 15), c)
+        hw = make_task("AP Gov reading", tasks, c, kind="schoolwork",
+                       due=(TODAY + dt.timedelta(days=1)).isoformat(), estimate=45)
+        tasks.append(hw)
+        result = planner.plan(tasks, c, state(), today=TODAY)
+        placed = [b for b in result.blocks if b.task_id == hw.id]
+        self.assertTrue(placed, "schoolwork vanished under a small coach cap")
+        self.assertEqual(placed[0].date, TODAY.isoformat())
+
+
+class TestOverridesAndBlackouts(unittest.TestCase):
+    def test_override_applies_only_inside_its_date_range(self):
+        c = cfg()
+        c["cadence"] = {}
+        c["coach_capacity_per_day"] = 1
+        c["cadence_overrides"] = [
+            {"from": "2026-09-01", "to": "2026-09-10", "coach_capacity_per_day": 4}
+        ]
+        tasks = essays(30, dt.date(2026, 11, 1), c)
+        result = planner.plan(tasks, c, state(), today=TODAY)
+        per_day = {}
+        for b in result.blocks:
+            if b.kind == "essay":
+                per_day[b.date] = per_day.get(b.date, 0) + 1
+        inside = [n for d, n in per_day.items() if "2026-09-01" <= d <= "2026-09-10"]
+        outside = [n for d, n in per_day.items() if d > "2026-09-10"]
+        self.assertTrue(inside and max(inside) > 1, "banking window never exceeded the base cap")
+        for n in inside:
+            self.assertLessEqual(n, 4)
+        for n in outside:
+            self.assertLessEqual(n, 1, "base cap should apply after the override ends")
+
+    def test_blackout_excludes_every_essay_stage_including_final(self):
+        """A zeroed cadence is not enough - `final` has no cadence key and
+        would otherwise leak straight into the test window."""
+        c = cfg()
+        c["blackouts"] = [
+            {"from": "2026-09-11", "to": "2026-09-15", "tiers": [2], "reason": "test wall"}
+        ]
+        tasks = essays(25, dt.date(2026, 11, 1), c)
+        result = planner.plan(tasks, c, state(), today=TODAY)
+        for b in result.blocks:
+            if "2026-09-11" <= b.date <= "2026-09-15":
+                self.assertNotEqual(b.kind, "essay",
+                                    f"'{b.title}' scheduled during the blackout on {b.date}")
+
+    def test_an_essay_blackout_leaves_schoolwork_completely_untouched(self):
+        """Blocking essays must not cost him a single hour of schoolwork."""
+        c = cfg()
+        tasks = essays(10, dt.date(2026, 11, 1), c)
+        for i in range(6):
+            tasks.append(make_task(f"Physics review {i}", tasks, c, kind="schoolwork",
+                                   due="2026-09-18", estimate=60))
+        before = planner.plan(tasks, c, state(), today=TODAY)
+        c["blackouts"] = [{"from": "2026-09-11", "to": "2026-09-15", "tiers": [2]}]
+        after = planner.plan(tasks, c, state(), today=TODAY)
+
+        def schoolwork(result):
+            return sorted((b.date, b.title) for b in result.blocks if b.kind == "schoolwork")
+
+        self.assertEqual(schoolwork(before), schoolwork(after))
+        self.assertTrue(schoolwork(after), "expected schoolwork to be scheduled at all")
+
+    def test_blackout_targets_only_the_listed_tiers(self):
+        c = cfg()
+        c["blackouts"] = [{"from": "2026-09-11", "to": "2026-09-15", "tiers": [2]}]
+        self.assertEqual(planner.blocked_tiers(dt.date(2026, 9, 12), c), {2})
+        self.assertEqual(planner.blocked_tiers(dt.date(2026, 9, 16), c), set())
+        self.assertEqual(planner.blocked_tiers(dt.date(2026, 9, 10), c), set())
+
+    def test_blackout_does_not_silently_swallow_a_missed_deadline(self):
+        """Work pushed past its due date by a blackout must still be reported."""
+        c = cfg()
+        c["blackouts"] = [{"from": "2026-09-01", "to": "2026-10-30", "tiers": [2]}]
+        tasks = essays(3, dt.date(2026, 9, 20), c)
+        result = planner.plan(tasks, c, state(), today=TODAY)
+        self.assertTrue(result.late or result.unplaceable,
+                        "a blackout must never become a silent hole")
+
+
+class TestQuizEstimates(unittest.TestCase):
+    def test_a_short_quiz_does_not_inflate(self):
+        """min_block_minutes floored every review stage, turning 60 into 100."""
+        c = cfg()
+        for estimate in (30, 45, 60, 90):
+            stages = stages_for("test", estimate, c)
+            total = sum(s.minutes for s in stages)
+            self.assertLessEqual(
+                total, estimate + c["min_block_minutes"],
+                f"{estimate}m quiz booked {total}m",
+            )
+
+    def test_a_full_test_still_gets_spaced_review(self):
+        c = cfg()
+        stages = stages_for("test", 240, c)
+        self.assertGreaterEqual(len(stages), 3, "a real test should still spread out")
+        self.assertEqual(sum(s.minutes for s in stages), 240)
+
+
+class TestReviewTiming(unittest.TestCase):
+    """Spaced review is only useful anchored to the test date."""
+
+    def test_cram_lands_next_to_the_test_not_two_weeks_early(self):
+        c = cfg()
+        due = dt.date(2026, 9, 25)
+        task = make_task("AP Bio unit test", [], c, kind="test",
+                         due=due.isoformat(), estimate=240)
+        result = planner.plan([task], c, state(), today=TODAY)
+        cram = next(b for b in result.blocks if b.stage_name == "cram")
+        days_before = (due - dt.date.fromisoformat(cram.date)).days
+        self.assertLessEqual(days_before, 2, f"cram scheduled {days_before}d before the test")
+        self.assertGreaterEqual(days_before, 0, "cram must not land after the test")
+
+    def test_review_ladder_stays_in_order_and_spreads_out(self):
+        c = cfg()
+        task = make_task("AP Bio unit test", [], c, kind="test",
+                         due="2026-09-25", estimate=240)
+        result = planner.plan([task], c, state(), today=TODAY)
+        mine = sorted((b for b in result.blocks if b.task_id == task.id),
+                      key=lambda b: (b.date, b.start))
+        self.assertEqual([b.stage_name for b in mine],
+                         ["review-1", "review-2", "review-3", "cram"])
+        self.assertGreaterEqual(len({b.date for b in mine}), 3,
+                                "review should span several days")
+
+    def test_review_does_not_begin_absurdly_early(self):
+        c = cfg()
+        due = dt.date(2026, 10, 30)          # two months out
+        task = make_task("Far away test", [], c, kind="test",
+                         due=due.isoformat(), estimate=240)
+        result = planner.plan([task], c, state(), today=TODAY)
+        first = min(b.date for b in result.blocks if b.task_id == task.id)
+        lead = (due - dt.date.fromisoformat(first)).days
+        self.assertLessEqual(lead, 14, f"review started {lead}d before the test")
+
+    def test_cram_the_night_before_is_not_reported_as_late(self):
+        """buffer_days must not turn correct test prep into a false alarm."""
+        c = cfg()
+        c["buffer_days"] = 2
+        task = make_task("AP Bio unit test", [], c, kind="test",
+                         due="2026-09-25", estimate=240)
+        result = planner.plan([task], c, state(), today=TODAY)
+        crams = [l for l in result.late if l.stage == "cram"]
+        self.assertEqual(crams, [], "a cram the night before is on time, not late")
+
+    def test_ordinary_work_still_keeps_its_buffer(self):
+        """Only deadline-pinned stages opt out of buffer_days."""
+        c = cfg()
+        c["buffer_days"] = 2
+        task = make_task("Lab report", [], c, kind="schoolwork",
+                         due="2026-09-25", estimate=60)
+        parts = planner.build_parts([task], c, {})
+        part = parts[task.id][0]
+        self.assertEqual(part.latest_date, dt.date(2026, 9, 23))

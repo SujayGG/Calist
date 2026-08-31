@@ -204,7 +204,13 @@ def cmd_plan(args: argparse.Namespace) -> int:
     print(f"PLAN  {result.start_date} -> {result.end_date}")
     print(BAR)
     print(f"  {s['blocks']} blocks, {round(s['work_minutes'] / 60, 1)}h of work across {s['days_with_work']} days")
-    print(f"  cadence scheduled: {s['cadence'].get('draft', 0)} drafts, {s['cadence'].get('revise', 0)} revisions")
+    cad = s.get("cadence", {})
+    drafts = cad.get("draft", 0)
+    revisions = sum(n for stage, n in cad.items() if stage.startswith("revise"))
+    finals = cad.get("final", 0)
+    print(f"  essay rounds scheduled: {drafts} drafts, {revisions} revisions, {finals} finals")
+    if s.get("coach_capacity"):
+        print(f"  coach capacity: {s['coach_capacity']} pieces/day")
     print(f"  creative sessions: {s['creative_sessions']}")
     print(f"  unused capacity next 7 days: {s['idle_hours_next_week']}h")
 

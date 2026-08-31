@@ -1,13 +1,35 @@
 {
   "owner": "Sujay",
   "target_date": "2026-09-22",
-  "horizon_days": 45,
+  "horizon_days": 130,
   "buffer_days": 2,
   "min_block_minutes": 25,
   "max_block_minutes": 90,
   "block_gap_minutes": 10,
   "essay_floor_minutes_per_day": 60,
-  "coach_latency_days": 2,
+  "coach_latency_days": 1,
+  "coach_capacity_per_day": 2,
+  "cadence_overrides": [
+    {
+      "from": "2026-09-01",
+      "to": "2026-09-10",
+      "coach_capacity_per_day": 4,
+      "cadence": {
+        "draft": 2
+      },
+      "reason": "bank essays ahead of the Sept 14-15 test wall"
+    }
+  ],
+  "blackouts": [
+    {
+      "from": "2026-09-11",
+      "to": "2026-09-15",
+      "tiers": [
+        2
+      ],
+      "reason": "Physics Forces MCQ+FRQ and Econ Timed Writing+TEST"
+    }
+  ],
   "sleep": {
     "cutoff_default": "23:00",
     "cutoff_gym_day": "22:00",
@@ -27,23 +49,31 @@
         "thu",
         "fri"
       ],
-      "start": "09:00",
+      "start": "08:30",
       "end": "14:40",
       "travel_before": 20,
       "travel_after": 17,
       "settle_after": 15,
-      "note": "walk to car + 17 min drive + settle before work starts"
+      "skip_dates": [
+        "2026-09-07",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "note": "arrives 8:25-8:40, first bell 9:05; 17 min drive home + 15 to settle"
     },
     {
       "id": "gym",
       "name": "Gym",
       "kind": "gym",
       "days": [
-        "mon",
         "tue",
-        "wed",
         "thu",
-        "fri"
+        "fri",
+        "mon",
+        "wed"
       ],
       "start": "05:30",
       "end": "06:30",
@@ -55,7 +85,29 @@
         "target_per_week": 5,
         "step_every_days": 14
       },
-      "note": "new habit - ramps up as the streak holds"
+      "note": "new habit - ramps only as the streak holds"
+    },
+    {
+      "id": "club",
+      "name": "Club",
+      "kind": "club",
+      "days": [
+        "mon",
+        "wed"
+      ],
+      "start": "16:30",
+      "end": "17:30",
+      "travel_before": 10,
+      "travel_after": 20,
+      "skip_dates": [
+        "2026-09-07",
+        "2026-10-12",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "note": "works at the library/coffee shop after school, then drives 20 min home"
     },
     {
       "id": "dinner",
@@ -70,29 +122,37 @@
         "sat",
         "sun"
       ],
-      "start": "18:30",
-      "end": "19:15"
+      "start": "19:00",
+      "end": "19:45"
     },
     {
       "id": "call",
       "name": "Call girlfriend",
       "kind": "call",
       "days": [
-        "mon",
         "tue",
-        "wed",
         "thu",
         "fri",
         "sat",
         "sun"
       ],
-      "start": "21:00",
-      "end": "21:45"
+      "start": "17:30",
+      "end": "18:15"
+    },
+    {
+      "id": "call-clubday",
+      "name": "Call girlfriend",
+      "kind": "call",
+      "days": [
+        "mon",
+        "wed"
+      ],
+      "start": "18:00",
+      "end": "18:45"
     }
   ],
   "cadence": {
-    "draft": 1,
-    "revise": 1
+    "draft": 1
   },
   "creative": {
     "min_sessions_per_week": 2,
@@ -108,17 +168,22 @@
     "essay": [
       {
         "name": "draft",
-        "weight": 0.55,
-        "awaits_days": 2
+        "weight": 0.4,
+        "awaits_days": 1
       },
       {
-        "name": "revise",
-        "weight": 0.35,
-        "gap_days_after": 1
+        "name": "revise-1",
+        "weight": 0.25,
+        "awaits_days": 1
       },
       {
-        "name": "polish",
-        "weight": 0.1
+        "name": "revise-2",
+        "weight": 0.2,
+        "awaits_days": 1
+      },
+      {
+        "name": "final",
+        "weight": 0.15
       }
     ],
     "schoolwork": [
@@ -143,21 +208,25 @@
       {
         "name": "review-1",
         "weight": 0.2,
-        "gap_days_after": 2
+        "gap_days_after": 2,
+        "start_within_days": 12
       },
       {
         "name": "review-2",
         "weight": 0.2,
-        "gap_days_after": 2
+        "gap_days_after": 2,
+        "start_within_days": 8
       },
       {
         "name": "review-3",
         "weight": 0.25,
-        "gap_days_after": 1
+        "gap_days_after": 1,
+        "start_within_days": 4
       },
       {
         "name": "cram",
-        "weight": 0.35
+        "weight": 0.35,
+        "start_within_days": 1
       }
     ]
   },
@@ -183,5 +252,8 @@
   "server": {
     "host": "127.0.0.1",
     "port": 8787
+  },
+  "start_within_days": {
+    "test": 12
   }
 }

@@ -46,6 +46,7 @@ class Part:
     minutes: int
     latest_date: dt.date | None
     is_final_part: bool
+    earliest_date: dt.date | None = None
 
     @property
     def id(self) -> str:
@@ -103,6 +104,47 @@ class PlanResult:
     stats: dict[str, Any]
 
 
+def _in_range(day: dt.date, spec: dict[str, Any]) -> bool:
+    start = spec.get("from")
+    end = spec.get("to")
+    if start and day < dt.date.fromisoformat(start):
+        return False
+    if end and day > dt.date.fromisoformat(end):
+        return False
+    return True
+
+
+def day_limits(day: dt.date, cfg: dict[str, Any]) -> tuple[dict[str, int], int]:
+    """Resolve this day's stage cadence and combined coach capacity.
+
+    The coach reviews only so much per day, so `coach_capacity_per_day` caps
+    ALL essay stages together - that throughput, not free time, is what decides
+    whether 35 essays get finished. Overrides let the cap change for a stretch
+    (e.g. banking essays ahead of a test week).
+    """
+    cadence = dict(cfg.get("cadence", {}))
+    capacity = int(cfg.get("coach_capacity_per_day", 0) or 0)
+    for spec in cfg.get("cadence_overrides", []):
+        if _in_range(day, spec):
+            cadence.update(spec.get("cadence", {}))
+            if spec.get("coach_capacity_per_day") is not None:
+                capacity = int(spec["coach_capacity_per_day"])
+    return cadence, capacity
+
+
+def blocked_tiers(day: dt.date, cfg: dict[str, Any]) -> set[int]:
+    """Tiers that must not be scheduled at all on this day.
+
+    A zeroed cadence is not enough: stages with no cadence entry (`final`)
+    would leak straight through into a test week.
+    """
+    blocked: set[int] = set()
+    for spec in cfg.get("blackouts", []):
+        if _in_range(day, spec):
+            blocked.update(int(t) for t in spec.get("tiers", []))
+    return blocked
+
+
 def split_minutes(total: int, cap: int, floor: int) -> list[int]:
     """Split a stage into sessions no longer than `cap`, avoiding slivers."""
     total = max(0, int(total))
@@ -149,8 +191,15 @@ def build_parts(tasks: list[Task], cfg: dict[str, Any], multipliers: dict[str, f
             mult = multipliers.get(stage.name, 1.0)
             minutes = max(floor, int(round(stage.minutes * mult)))
             latest = None
+            earliest = None
             if due:
-                latest = due - dt.timedelta(days=buffer_days + stage_lead_days(task, idx))
+                # buffer_days means "finish comfortably early". A stage pinned
+                # near its deadline on purpose - a cram the night before a test -
+                # opts out of it, otherwise correct scheduling reports as late.
+                slack = 0 if stage.start_within_days is not None else buffer_days
+                latest = due - dt.timedelta(days=slack + stage_lead_days(task, idx))
+                if stage.start_within_days is not None:
+                    earliest = due - dt.timedelta(days=int(stage.start_within_days))
             sizes = split_minutes(minutes, cap, floor)
             for p, size in enumerate(sizes):
                 parts.append(
@@ -168,6 +217,7 @@ def build_parts(tasks: list[Task], cfg: dict[str, Any], multipliers: dict[str, f
                         minutes=size,
                         latest_date=latest,
                         is_final_part=(p == len(sizes) - 1),
+                        earliest_date=earliest,
                     )
                 )
         if parts:
@@ -299,10 +349,10 @@ def plan(
     horizon = int(cfg.get("horizon_days", 45))
     gap = int(cfg.get("block_gap_minutes", 10))
     essay_floor = int(cfg.get("essay_floor_minutes_per_day", 60))
-    cadence = cfg.get("cadence", {})
     creative = cfg.get("creative", {})
 
     by_id = {t.id: t for t in tasks}
+    default_cadence = cfg.get("cadence", {})
     parts_by_task = build_parts([t for t in tasks if not t.done], cfg, multipliers)
 
     # Stages already finished on a given date count against that day's cadence.
@@ -315,14 +365,25 @@ def plan(
         for stage in task.stages:
             if stage.done and stage.done_date:
                 day_key = stage.done_date[:10]
-                already_done.setdefault(day_key, {})
-                already_done[day_key][stage.name] = already_done[day_key].get(stage.name, 0) + 1
+                counts = already_done.setdefault(day_key, {})
+                counts[stage.name] = counts.get(stage.name, 0) + 1
+                counts["_tier2"] = counts.get("_tier2", 0) + 1
 
     # Per-task cursor: which part comes next, and the earliest date it may run.
     cursor: dict[str, int] = {tid: 0 for tid in parts_by_task}
     available: dict[str, dt.date] = {
         tid: initial_available(by_id[tid], today, cfg) for tid in parts_by_task
     }
+
+    # Reviewing for a test three weeks out is wasted effort and crowds out work
+    # that is actually due. Hold each kind until it is within range of its date.
+    windows_by_kind = cfg.get("start_within_days", {})
+    for tid in parts_by_task:
+        task = by_id[tid]
+        within = windows_by_kind.get(task.kind)
+        due = task.due_date
+        if within and due:
+            available[tid] = max(available[tid], min(due, due - dt.timedelta(days=int(within))))
 
     blocks: list[Block] = []
     warnings: list[str] = []
@@ -341,22 +402,41 @@ def plan(
                 continue
             if available[tid] > day:
                 continue
-            out.append(plist[i])
+            part = plist[i]
+            if part.earliest_date and part.earliest_date > day:
+                continue  # too far from the test for review to be worth anything
+            out.append(part)
         out.sort(key=_sort_key)
         return out
 
-    def capped(part: Part, day_counts: dict[str, int]) -> bool:
-        """True if this stage has already hit its daily cadence limit.
+    def capped(
+        part: Part,
+        day_counts: dict[str, int],
+        cadence: dict[str, int],
+        coach_cap: int,
+        blocked: set[int],
+    ) -> bool:
+        """True if this part cannot be scheduled on this day.
 
-        The essay coach can only turn around so much work. Writing five drafts
-        on a free Saturday just means five revisions land on the same day later.
+        Three reasons, in order of how often they bite:
+        the day is blacked out for this tier; the coach has already taken all
+        she can review today; or this specific stage hit its own cadence limit.
         """
+        if part.tier in blocked:
+            return True
         if part.tier != 2:
             return False
+        if coach_cap and day_counts.get("_tier2", 0) >= coach_cap:
+            return True
         limit = cadence.get(part.stage_name)
         if limit is None:
             return False
         return day_counts.get(part.stage_name, 0) >= int(limit)
+
+    def bump(day_counts: dict[str, int], part: Part) -> None:
+        day_counts[part.stage_name] = day_counts.get(part.stage_name, 0) + 1
+        if part.tier == 2:
+            day_counts["_tier2"] = day_counts.get("_tier2", 0) + 1
 
     def commit(part: Part, day: dt.date, span: tuple[int, int]) -> None:
         start, end = span
@@ -394,6 +474,8 @@ def plan(
         capacity = canvas.remaining
         placed_today = 0
         day_counts: dict[str, int] = dict(already_done.get(day.isoformat(), {}))
+        cadence, coach_cap = day_limits(day, cfg)
+        blocked = blocked_tiers(day, cfg)
         week_key = f"{day.isocalendar().year}-W{day.isocalendar().week:02d}"
 
         # Reserve a slice for essays so schoolwork cannot crowd them out
@@ -404,7 +486,7 @@ def plan(
 
         # --- pass 1: schoolwork and tests, most urgent first
         for part in ready_parts(day):
-            if part.tier != 1:
+            if part.tier != 1 or part.tier in blocked:
                 continue
             if tier1_used + part.minutes > tier1_budget:
                 continue
@@ -422,7 +504,9 @@ def plan(
                     (
                         p
                         for p in ready_parts(day)
-                        if p.tier == 2 and p.stage_name == stage_name
+                        if p.tier == 2
+                        and p.stage_name == stage_name
+                        and not capped(p, day_counts, cadence, coach_cap, blocked)
                     ),
                     None,
                 )
@@ -433,18 +517,19 @@ def plan(
                     break
                 commit(candidate, day, span)
                 cadence_hits[stage_name] = cadence_hits.get(stage_name, 0) + 1
-                day_counts[stage_name] = day_counts.get(stage_name, 0) + 1
+                bump(day_counts, candidate)
                 done += 1
                 placed_today += 1
 
         # --- pass 3: remaining essay work, but never past the cadence cap
         for part in ready_parts(day):
-            if part.tier != 2 or capped(part, day_counts):
+            if part.tier != 2 or capped(part, day_counts, cadence, coach_cap, blocked):
                 continue
             span = canvas.place(part.minutes)
             if span:
                 commit(part, day, span)
-                day_counts[part.stage_name] = day_counts.get(part.stage_name, 0) + 1
+                cadence_hits[part.stage_name] = cadence_hits.get(part.stage_name, 0) + 1
+                bump(day_counts, part)
                 placed_today += 1
 
         # --- pass 4: building with Claude - a protected floor, earned
@@ -456,8 +541,12 @@ def plan(
             must_take = (want - got) >= days_left  # running out of week
             eligible = (weekday_key(day) in prefers) or must_take
             day_complete = placed_today > 0 or not ready_parts(day)
+            if 3 in blocked:
+                eligible = False
             if eligible and (day_complete or not creative.get("requires_day_complete", True)):
-                build_part = next((p for p in ready_parts(day) if p.tier == 3), None)
+                build_part = next(
+                    (p for p in ready_parts(day) if p.tier == 3 and p.tier not in blocked), None
+                )
                 minutes = int(creative.get("session_minutes", 60))
                 if build_part:
                     span = canvas.place(build_part.minutes)
@@ -484,12 +573,14 @@ def plan(
 
         # --- pass 5: anything else that fits (schoolwork overflow, spare stages)
         for part in ready_parts(day):
-            if capped(part, day_counts):
+            if capped(part, day_counts, cadence, coach_cap, blocked):
                 continue
             span = canvas.place(part.minutes)
             if span:
                 commit(part, day, span)
-                day_counts[part.stage_name] = day_counts.get(part.stage_name, 0) + 1
+                if part.tier == 2:
+                    cadence_hits[part.stage_name] = cadence_hits.get(part.stage_name, 0) + 1
+                bump(day_counts, part)
                 placed_today += 1
 
         idle_minutes += canvas.remaining
@@ -567,6 +658,8 @@ def plan(
 
     end = today + dt.timedelta(days=horizon - 1)
     stats = {
+        "coach_capacity": cfg.get("coach_capacity_per_day"),
+        "cadence_config": default_cadence,
         "tasks_total": len(tasks),
         "tasks_done": sum(1 for t in tasks if t.done),
         "blocks": len(blocks),
@@ -583,8 +676,8 @@ def plan(
     if late and idle_next_week > 240:
         warnings.append(
             f"You have {round(idle_next_week / 60, 1)}h unused this week but work is still "
-            f"running late - the cadence cap ({cadence}) is the limit, not your time. "
-            f"Raise it in config.json to go faster."
+            f"running late - the coach's daily capacity is the limit, not your time. "
+            f"Raise coach_capacity_per_day in config.json to go faster."
         )
 
     if late:

@@ -1,1 +1,2798 @@
-[]
+[
+  {
+    "id": "ut-austin-essay-1",
+    "title": "UT Austin - essay 1",
+    "kind": "essay",
+    "school": "UT Austin",
+    "due": "2026-10-15",
+    "estimate_minutes": 180,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 72,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 45,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 36,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 27,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "ut-austin-essay-2",
+    "title": "UT Austin - essay 2",
+    "kind": "essay",
+    "school": "UT Austin",
+    "due": "2026-10-15",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "ut-austin-essay-3",
+    "title": "UT Austin - essay 3",
+    "kind": "essay",
+    "school": "UT Austin",
+    "due": "2026-10-15",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "ut-austin-essay-4",
+    "title": "UT Austin - essay 4",
+    "kind": "essay",
+    "school": "UT Austin",
+    "due": "2026-10-15",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "ut-austin-essay-5",
+    "title": "UT Austin - essay 5",
+    "kind": "essay",
+    "school": "UT Austin",
+    "due": "2026-10-15",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "ut-austin-essay-6",
+    "title": "UT Austin - essay 6",
+    "kind": "essay",
+    "school": "UT Austin",
+    "due": "2026-10-15",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "stanford-essay-1",
+    "title": "Stanford - essay 1",
+    "kind": "essay",
+    "school": "Stanford",
+    "due": "2026-11-01",
+    "estimate_minutes": 180,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 72,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 45,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 36,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 27,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "stanford-essay-2",
+    "title": "Stanford - essay 2",
+    "kind": "essay",
+    "school": "Stanford",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "stanford-essay-3",
+    "title": "Stanford - essay 3",
+    "kind": "essay",
+    "school": "Stanford",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "stanford-essay-4",
+    "title": "Stanford - essay 4",
+    "kind": "essay",
+    "school": "Stanford",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "virginia-tech-essay-1",
+    "title": "Virginia Tech - essay 1",
+    "kind": "essay",
+    "school": "Virginia Tech",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "virginia-tech-essay-2",
+    "title": "Virginia Tech - essay 2",
+    "kind": "essay",
+    "school": "Virginia Tech",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "virginia-tech-essay-3",
+    "title": "Virginia Tech - essay 3",
+    "kind": "essay",
+    "school": "Virginia Tech",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "virginia-tech-essay-4",
+    "title": "Virginia Tech - essay 4",
+    "kind": "essay",
+    "school": "Virginia Tech",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "purdue-essay-1",
+    "title": "Purdue - essay 1",
+    "kind": "essay",
+    "school": "Purdue",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "purdue-essay-2",
+    "title": "Purdue - essay 2",
+    "kind": "essay",
+    "school": "Purdue",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "purdue-essay-3",
+    "title": "Purdue - essay 3",
+    "kind": "essay",
+    "school": "Purdue",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "illinois-essay-1",
+    "title": "Illinois - essay 1",
+    "kind": "essay",
+    "school": "Illinois",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "illinois-essay-2",
+    "title": "Illinois - essay 2",
+    "kind": "essay",
+    "school": "Illinois",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "illinois-essay-3",
+    "title": "Illinois - essay 3",
+    "kind": "essay",
+    "school": "Illinois",
+    "due": "2026-11-01",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "rice-essay-1",
+    "title": "Rice - essay 1",
+    "kind": "essay",
+    "school": "Rice",
+    "due": "2027-01-04",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "rice-essay-2",
+    "title": "Rice - essay 2",
+    "kind": "essay",
+    "school": "Rice",
+    "due": "2027-01-04",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "rice-essay-3",
+    "title": "Rice - essay 3",
+    "kind": "essay",
+    "school": "Rice",
+    "due": "2027-01-04",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "rice-essay-4",
+    "title": "Rice - essay 4",
+    "kind": "essay",
+    "school": "Rice",
+    "due": "2027-01-04",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "uc-piq-1",
+    "title": "UC PIQ 1",
+    "kind": "essay",
+    "school": "UC",
+    "due": "2026-12-01",
+    "estimate_minutes": 180,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 72,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 45,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 36,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 27,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "covers Berkeley, UCLA and UCSD",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "uc-piq-2",
+    "title": "UC PIQ 2",
+    "kind": "essay",
+    "school": "UC",
+    "due": "2026-12-01",
+    "estimate_minutes": 180,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 72,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 45,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 36,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 27,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "covers Berkeley, UCLA and UCSD",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "activity-list",
+    "title": "Activity list",
+    "kind": "essay",
+    "school": "",
+    "due": "2026-10-15",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "needed first for UT Austin EA",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "texas-a-m-essay-1",
+    "title": "Texas A&M - essay 1",
+    "kind": "essay",
+    "school": "Texas A&M",
+    "due": null,
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "DEADLINE UNCONFIRMED - tracker shows Aug 1 which has passed. Set a real due date.",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "texas-a-m-essay-2",
+    "title": "Texas A&M - essay 2",
+    "kind": "essay",
+    "school": "Texas A&M",
+    "due": null,
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "DEADLINE UNCONFIRMED - tracker shows Aug 1 which has passed. Set a real due date.",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "texas-a-m-essay-3",
+    "title": "Texas A&M - essay 3",
+    "kind": "essay",
+    "school": "Texas A&M",
+    "due": null,
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "DEADLINE UNCONFIRMED - tracker shows Aug 1 which has passed. Set a real due date.",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "texas-a-m-essay-4",
+    "title": "Texas A&M - essay 4",
+    "kind": "essay",
+    "school": "Texas A&M",
+    "due": null,
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "DEADLINE UNCONFIRMED - tracker shows Aug 1 which has passed. Set a real due date.",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "texas-a-m-essay-5",
+    "title": "Texas A&M - essay 5",
+    "kind": "essay",
+    "school": "Texas A&M",
+    "due": null,
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "DEADLINE UNCONFIRMED - tracker shows Aug 1 which has passed. Set a real due date.",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "texas-a-m-essay-6",
+    "title": "Texas A&M - essay 6",
+    "kind": "essay",
+    "school": "Texas A&M",
+    "due": null,
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "DEADLINE UNCONFIRMED - tracker shows Aug 1 which has passed. Set a real due date.",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "texas-a-m-essay-7",
+    "title": "Texas A&M - essay 7",
+    "kind": "essay",
+    "school": "Texas A&M",
+    "due": null,
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "DEADLINE UNCONFIRMED - tracker shows Aug 1 which has passed. Set a real due date.",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "texas-a-m-essay-8",
+    "title": "Texas A&M - essay 8",
+    "kind": "essay",
+    "school": "Texas A&M",
+    "due": null,
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "draft",
+        "minutes": 48,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "revise-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 1,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "final",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "DEADLINE UNCONFIRMED - tracker shows Aug 1 which has passed. Set a real due date.",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "physics-friction-lab",
+    "title": "Physics - Friction Lab",
+    "kind": "schoolwork",
+    "school": "Physics",
+    "due": "2026-08-31",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 60,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "physics-air-resistance-lab",
+    "title": "Physics - Air Resistance Lab",
+    "kind": "schoolwork",
+    "school": "Physics",
+    "due": "2026-09-10",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 60,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "physics-forces-quest",
+    "title": "Physics - Forces Quest",
+    "kind": "schoolwork",
+    "school": "Physics",
+    "due": "2026-09-11",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 60,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "physics-forces-mcq",
+    "title": "Physics - Forces MCQ",
+    "kind": "test",
+    "school": "Physics",
+    "due": "2026-09-14",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "review-1",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 8,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-3",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 42,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "physics-forces-frq",
+    "title": "Physics - Forces FRQ",
+    "kind": "test",
+    "school": "Physics",
+    "due": "2026-09-15",
+    "estimate_minutes": 120,
+    "stages": [
+      {
+        "name": "review-1",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-2",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 8,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-3",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 42,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-quiz-modules-1-4-1-6",
+    "title": "Econ - Quiz Modules 1.4-1.6",
+    "kind": "test",
+    "school": "Econ",
+    "due": "2026-09-01",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "review-3",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 35,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-read-mod-2-3-worksheet",
+    "title": "Econ - Read Mod 2.3 + worksheet",
+    "kind": "schoolwork",
+    "school": "Econ",
+    "due": "2026-09-01",
+    "estimate_minutes": 45,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 45,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-read-mod-2-4-worksheet",
+    "title": "Econ - Read Mod 2.4 + worksheet",
+    "kind": "schoolwork",
+    "school": "Econ",
+    "due": "2026-09-02",
+    "estimate_minutes": 40,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 40,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-read-mod-2-5",
+    "title": "Econ - Read Mod 2.5",
+    "kind": "schoolwork",
+    "school": "Econ",
+    "due": "2026-09-03",
+    "estimate_minutes": 30,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-read-mod-2-6",
+    "title": "Econ - Read Mod 2.6",
+    "kind": "schoolwork",
+    "school": "Econ",
+    "due": "2026-09-09",
+    "estimate_minutes": 40,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 40,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-quiz-modules-2-3-2-5",
+    "title": "Econ - Quiz Modules 2.3-2.5",
+    "kind": "test",
+    "school": "Econ",
+    "due": "2026-09-09",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "review-3",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 35,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-timed-writing",
+    "title": "Econ - Timed Writing",
+    "kind": "test",
+    "school": "Econ",
+    "due": "2026-09-14",
+    "estimate_minutes": 90,
+    "stages": [
+      {
+        "name": "review-1",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-3",
+        "minutes": 28,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 39,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-test-units-1-2",
+    "title": "Econ - TEST (Units 1-2)",
+    "kind": "test",
+    "school": "Econ",
+    "due": "2026-09-15",
+    "estimate_minutes": 150,
+    "stages": [
+      {
+        "name": "review-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-2",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 8,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-3",
+        "minutes": 38,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 52,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-read-module-2-8b",
+    "title": "Econ - Read Module 2.8B",
+    "kind": "schoolwork",
+    "school": "Econ",
+    "due": "2026-09-16",
+    "estimate_minutes": 40,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 40,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-read-module-2-8a",
+    "title": "Econ - Read Module 2.8A",
+    "kind": "schoolwork",
+    "school": "Econ",
+    "due": "2026-09-17",
+    "estimate_minutes": 40,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 40,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-quiz-mods-2-8b",
+    "title": "Econ - Quiz Mods 2.8B",
+    "kind": "test",
+    "school": "Econ",
+    "due": "2026-09-21",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "review-3",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 35,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-quiz-6-1-6-4",
+    "title": "Econ - Quiz 6.1-6.4",
+    "kind": "test",
+    "school": "Econ",
+    "due": "2026-09-28",
+    "estimate_minutes": 90,
+    "stages": [
+      {
+        "name": "review-1",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-3",
+        "minutes": 28,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 39,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-ia-article-for-approval",
+    "title": "Econ - IA article for approval",
+    "kind": "schoolwork",
+    "school": "Econ",
+    "due": "2026-09-29",
+    "estimate_minutes": 45,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 45,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-timed-writing-2",
+    "title": "Econ - Timed Writing #2",
+    "kind": "test",
+    "school": "Econ",
+    "due": "2026-10-01",
+    "estimate_minutes": 90,
+    "stages": [
+      {
+        "name": "review-1",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-3",
+        "minutes": 28,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 39,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-test-units-2-6",
+    "title": "Econ - Test (Units 2 & 6)",
+    "kind": "test",
+    "school": "Econ",
+    "due": "2026-10-02",
+    "estimate_minutes": 150,
+    "stages": [
+      {
+        "name": "review-1",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 12,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-2",
+        "minutes": 30,
+        "status": "todo",
+        "gap_days_after": 2,
+        "awaits_days": 0,
+        "start_within_days": 8,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "review-3",
+        "minutes": 38,
+        "status": "todo",
+        "gap_days_after": 1,
+        "awaits_days": 0,
+        "start_within_days": 4,
+        "done_date": null,
+        "actual_minutes": null
+      },
+      {
+        "name": "cram",
+        "minutes": 52,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": 1,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "econ-ia-1-first-draft",
+    "title": "Econ - IA #1 first draft",
+    "kind": "schoolwork",
+    "school": "Econ",
+    "due": "2026-10-09",
+    "estimate_minutes": 240,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 240,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "major grade",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "tok-email-supervisor-re-inte",
+    "title": "TOK - email supervisor re interim meeting",
+    "kind": "admin",
+    "school": "TOK",
+    "due": "2026-09-09",
+    "estimate_minutes": 15,
+    "stages": [
+      {
+        "name": "do",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "tok-objects-theme-ia-prompt",
+    "title": "TOK - Objects/Theme/IA prompt selections",
+    "kind": "schoolwork",
+    "school": "TOK",
+    "due": "2026-09-15",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 60,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "tok-reading-log-1",
+    "title": "TOK - Reading Log #1",
+    "kind": "schoolwork",
+    "school": "TOK",
+    "due": "2026-09-16",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 60,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "tok-exhibition-draft-for-tea",
+    "title": "TOK - Exhibition draft for teacher feedback",
+    "kind": "schoolwork",
+    "school": "TOK",
+    "due": "2026-09-24",
+    "estimate_minutes": 300,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 300,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "tok-interim-meeting-notes-ma",
+    "title": "TOK - Interim Meeting Notes (ManageBac)",
+    "kind": "admin",
+    "school": "TOK",
+    "due": "2026-10-02",
+    "estimate_minutes": 20,
+    "stages": [
+      {
+        "name": "do",
+        "minutes": 25,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "tok-reading-log-2",
+    "title": "TOK - Reading Log #2",
+    "kind": "schoolwork",
+    "school": "TOK",
+    "due": "2026-10-08",
+    "estimate_minutes": 60,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 60,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "tok-self-selected-reading",
+    "title": "TOK - Self-Selected Reading",
+    "kind": "schoolwork",
+    "school": "TOK",
+    "due": "2026-10-08",
+    "estimate_minutes": 90,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 90,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  },
+  {
+    "id": "tok-exhibition-final-draft",
+    "title": "TOK - Exhibition final draft",
+    "kind": "schoolwork",
+    "school": "TOK",
+    "due": "2026-10-20",
+    "estimate_minutes": 180,
+    "stages": [
+      {
+        "name": "work",
+        "minutes": 180,
+        "status": "todo",
+        "gap_days_after": 0,
+        "awaits_days": 0,
+        "start_within_days": null,
+        "done_date": null,
+        "actual_minutes": null
+      }
+    ],
+    "priority": 0,
+    "notes": "",
+    "source": "",
+    "created": "2026-08-31"
+  }
+]
