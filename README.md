@@ -1,0 +1,105 @@
+# Calist
+
+A deadline planner that understands your actual day.
+
+School ends at 2:40. You walk to the car, drive 17 minutes, and get home. Calist
+knows your first work block starts at **3:12pm**, not 2:41. That is the whole
+idea: a schedule made of time that really exists.
+
+Built for one person, runs entirely on your own machine, and costs nothing.
+**Python 3.11 standard library only** - no pip install, no accounts, no API keys.
+
+## Quick start (Windows)
+
+```bat
+py -m calist setup --school-end 14:40 --drive 17 --settle 15 --target 2026-09-22
+py -m calist add "Purdue - why this major" --due 2026-09-20 --estimate 120
+py -m calist plan
+py -m calist today
+py -m calist serve
+```
+
+Then open http://127.0.0.1:8787.
+
+On macOS/Linux use `python3 -m calist` instead of `py -m calist`.
+
+## What makes it different
+
+**It models the friction.** Anchors (school, clubs, gym, dinner, the call with
+your girlfriend) carry travel and settle buffers, and those are removed from the
+day before any work is placed.
+
+**It models your essay coach.** Essays run `draft -> [coach turnaround] -> revise
+-> polish`. A revision is *unschedulable* until the coach has actually had the
+draft for `coach_latency_days`. The daily cadence - one draft, one revision - is
+a **cap**, because writing five drafts on a free Saturday just means five
+revisions land on the same day later.
+
+**It never lies about overcommitment.** Work that can't fit is reported as
+`unplaceable`; work that fits only after its deadline is reported as `late`, with
+the number of days and what you can do about it. It will also tell you when the
+cadence, not your time, is the limit.
+
+**It learns.** `calibrate` derives per-stage multipliers from what you actually
+logged - if revisions take you 1.5x your estimate, future plans budget 1.5x.
+`habits` turns phone usage and completions into your real follow-through by hour,
+and work gets scheduled where you actually follow through.
+
+**It protects what matters.** Dinner and the call are never scheduled over. Sleep
+math is validated - it warns instead of quietly booking you 6-hour nights. The
+gym ramps from 3 days a week rather than starting at 5 and collapsing. Building
+things with Claude has a guaranteed weekly floor that survives replanning.
+
+## Commands
+
+| command | what it does |
+|---|---|
+| `setup` | configure your real week (school hours, drive, sleep, target) |
+| `add` | add an essay, assignment, test or build project |
+| `plan` | rebuild the schedule and write `plan.ics` |
+| `today` | the day, with anchors and work blocks (`--days 3`) |
+| `next` | what to do right now (`--json` for the phone) |
+| `done` | mark a stage complete, with real minutes |
+| `skip` | log a miss so follow-through stays honest |
+| `status` | progress, and what Calist has learned about you |
+| `why` | where a day's hours actually go |
+| `import` | read an `.ics` (`--as-anchors` for recurring commitments) |
+| `usage` | log phone time by hand |
+| `ics` | re-export the calendar |
+| `serve` | dashboard on :8787 |
+| `watch` | distraction nudges (`--dry-run` to test safely) |
+
+## The nudges
+
+**Windows:** `py -m calist watch` polls the foreground window via ctypes and,
+after 7 minutes in a watched app, shows an always-on-top window with your current
+block and *On it* / *Snooze 5*. Instagram is usually a browser tab, so the
+watchlist matches window titles as well as process names - edit `watch` in
+`data/config.json`. Start with `--dry-run` to see what it detects without
+anything popping up.
+
+**Android:** see [docs/ANDROID.md](docs/ANDROID.md) - 4 free MacroDroid macros
+that nudge you and log your real app usage back to the dashboard.
+
+## Your data
+
+Everything is plain text in `data/`, git-ignored by default:
+
+| file | |
+|---|---|
+| `config.json` | your week, sleep, cadence, watchlist |
+| `tasks.json` | tasks and their stages |
+| `plan.json` | **generated** - never hand-edit, re-run `plan` |
+| `plan.ics` | subscribe to this in Google Calendar |
+| `log.jsonl` | completions, skips, nudges |
+| `usage.jsonl` | phone app usage |
+| `profile.md` | Claude's notes on how you actually work |
+
+## Tests
+
+```
+python3 -m unittest discover tests -v
+```
+
+The Windows overlay and the Android macros are the only parts not covered - their
+logic is tested behind a fake backend, and the platform calls are thin adapters.

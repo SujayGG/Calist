@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calist</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Calist <span id="today-label"></span></h1>
+    <div class="countdown">
+      <div><b id="days-left">-</b> <small>days to target</small></div>
+      <div><b id="streak">0</b> <small>day streak</small></div>
+    </div>
+  </header>
+
+  <div id="banners"></div>
+
+  <div class="grid">
+    <div>
+      <div class="card">
+        <div class="daynav">
+          <button class="ghost" id="prev">&larr;</button>
+          <span class="title" id="day-title">-</span>
+          <button class="ghost" id="next">&rarr;</button>
+          <span class="spacer"></span>
+          <button class="ghost" id="today-btn">today</button>
+          <button class="primary" id="replan">replan</button>
+        </div>
+        <div class="tl" id="timeline"></div>
+      </div>
+
+      <div class="card">
+        <h2>Next 7 days</h2>
+        <div class="week" id="week"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Essays</h2>
+        <div class="meter" id="essay-meter"></div>
+        <div class="legend" id="essay-legend"></div>
+        <div class="stat"><span class="k">Unused time this week</span><span class="v" id="idle">-</span></div>
+        <div class="stat"><span class="k">Scheduled late</span><span class="v" id="late-count">-</span></div>
+      </div>
+
+      <div class="card">
+        <h2>By school</h2>
+        <div class="schools" id="schools"></div>
+      </div>
+
+      <div class="card">
+        <h2>What Calist has learned</h2>
+        <ul class="plain" id="learned"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Needs attention</h2>
+        <ul class="plain" id="attention"></ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>Local only &middot; data lives in <code>data/</code> &middot; subscribe to <a href="/plan.ics">plan.ics</a></footer>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>

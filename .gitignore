@@ -1,0 +1,18 @@
+# Generated - rebuilt by `calist plan`, never worth committing
+data/plan.json
+data/plan.ics
+data/state.json
+
+# Activity logs - machine-local, can get noisy
+data/log.jsonl
+data/usage.jsonl
+
+# Dropped syllabi and calendars
+data/sources/*
+!data/sources/.gitkeep
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
