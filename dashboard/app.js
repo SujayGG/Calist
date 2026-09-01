@@ -186,6 +186,75 @@ async function refresh() {
   renderStatus(status);
 }
 
+// ---- the command bar -------------------------------------------------
+let pending = null;
+
+function sayResult(html, cls) {
+  $("say-result").innerHTML = html
+    ? `<div class="confirm ${cls || ""}">${html}</div>` : "";
+}
+
+async function askSay(text) {
+  sayResult("<div class='txt'>Reading that&hellip;</div>");
+  let data;
+  try {
+    data = await post("/api/say", { text });
+  } catch (err) {
+    sayResult(`<div class='txt'>Could not reach Calist: ${esc(err.message)}</div>`, "bad");
+    return;
+  }
+  if (!data.ok) {
+    const p = data.preview;
+    let html = `<div class='txt'>${esc(data.error === "ambiguous" || data.error === "no match"
+      ? p.summary : (data.error || "I did not understand that."))}</div>`;
+    if (p && p.choices && p.choices.length) {
+      html += "<ul>" + p.choices.map((c) => `<li>${esc(c.title)}</li>`).join("") + "</ul>";
+    }
+    sayResult(html, "bad");
+    pending = null;
+    return;
+  }
+  pending = { command: data.command, text };
+  sayResult(
+    `<div class='txt'><b>${esc(data.preview.summary)}</b></div>` +
+    `<span class='src'>${esc(data.command.source)}</span>` +
+    `<button class='primary' id='say-apply'>Apply</button>` +
+    `<button class='ghost' id='say-cancel'>Cancel</button>`
+  );
+  $("say-apply").onclick = applySay;
+  $("say-cancel").onclick = () => { pending = null; sayResult(""); };
+}
+
+async function applySay() {
+  if (!pending) return;
+  $("say-apply").disabled = true;
+  $("say-apply").textContent = "Applying…";
+  try {
+    const data = await post("/api/say/apply", pending);
+    if (!data.ok) {
+      sayResult(`<div class='txt'>${esc(data.error)}</div>`, "bad");
+      return;
+    }
+    const r = data.result;
+    let msg = esc(r.detail || "done");
+    if (r.late !== undefined) {
+      msg += ` &middot; replanned, ${r.late} late, ${r.unplaceable} with no room`;
+    }
+    sayResult(`<div class='txt'>${msg}</div>`, "ok");
+    $("say-input").value = "";
+    pending = null;
+    await refresh();
+  } catch (err) {
+    sayResult(`<div class='txt'>${esc(err.message)}</div>`, "bad");
+  }
+}
+
+$("say-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const text = $("say-input").value.trim();
+  if (text) askSay(text);
+});
+
 $("prev").onclick = () => { offset -= 1; refresh(); };
 $("next").onclick = () => { offset += 1; refresh(); };
 $("today-btn").onclick = () => { offset = 0; refresh(); };

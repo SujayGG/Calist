@@ -5,6 +5,7 @@
     "kind": "essay",
     "school": "UT Austin",
     "due": "2026-10-15",
+    "available_from": "2026-08-31",
     "estimate_minutes": 180,
     "stages": [
       {
@@ -59,6 +60,7 @@
     "kind": "essay",
     "school": "UT Austin",
     "due": "2026-10-15",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -113,6 +115,7 @@
     "kind": "essay",
     "school": "UT Austin",
     "due": "2026-10-15",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -167,6 +170,7 @@
     "kind": "essay",
     "school": "UT Austin",
     "due": "2026-10-15",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -221,6 +225,7 @@
     "kind": "essay",
     "school": "UT Austin",
     "due": "2026-10-15",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -275,6 +280,7 @@
     "kind": "essay",
     "school": "UT Austin",
     "due": "2026-10-15",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -329,6 +335,7 @@
     "kind": "essay",
     "school": "Stanford",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 180,
     "stages": [
       {
@@ -383,6 +390,7 @@
     "kind": "essay",
     "school": "Stanford",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -437,6 +445,7 @@
     "kind": "essay",
     "school": "Stanford",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -491,6 +500,7 @@
     "kind": "essay",
     "school": "Stanford",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -545,6 +555,7 @@
     "kind": "essay",
     "school": "Virginia Tech",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -599,6 +610,7 @@
     "kind": "essay",
     "school": "Virginia Tech",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -653,6 +665,7 @@
     "kind": "essay",
     "school": "Virginia Tech",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -707,6 +720,7 @@
     "kind": "essay",
     "school": "Virginia Tech",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -761,6 +775,7 @@
     "kind": "essay",
     "school": "Purdue",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -815,6 +830,7 @@
     "kind": "essay",
     "school": "Purdue",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -869,6 +885,7 @@
     "kind": "essay",
     "school": "Purdue",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -923,6 +940,7 @@
     "kind": "essay",
     "school": "Illinois",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -977,6 +995,7 @@
     "kind": "essay",
     "school": "Illinois",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1031,6 +1050,7 @@
     "kind": "essay",
     "school": "Illinois",
     "due": "2026-11-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1085,6 +1105,7 @@
     "kind": "essay",
     "school": "Rice",
     "due": "2027-01-04",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1139,6 +1160,7 @@
     "kind": "essay",
     "school": "Rice",
     "due": "2027-01-04",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1193,6 +1215,7 @@
     "kind": "essay",
     "school": "Rice",
     "due": "2027-01-04",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1247,6 +1270,7 @@
     "kind": "essay",
     "school": "Rice",
     "due": "2027-01-04",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1301,6 +1325,7 @@
     "kind": "essay",
     "school": "UC",
     "due": "2026-12-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 180,
     "stages": [
       {
@@ -1355,6 +1380,7 @@
     "kind": "essay",
     "school": "UC",
     "due": "2026-12-01",
+    "available_from": "2026-08-31",
     "estimate_minutes": 180,
     "stages": [
       {
@@ -1409,6 +1435,7 @@
     "kind": "essay",
     "school": "",
     "due": "2026-10-15",
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1463,6 +1490,7 @@
     "kind": "essay",
     "school": "Texas A&M",
     "due": null,
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1517,6 +1545,7 @@
     "kind": "essay",
     "school": "Texas A&M",
     "due": null,
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1571,6 +1600,7 @@
     "kind": "essay",
     "school": "Texas A&M",
     "due": null,
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1625,6 +1655,7 @@
     "kind": "essay",
     "school": "Texas A&M",
     "due": null,
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1679,6 +1710,7 @@
     "kind": "essay",
     "school": "Texas A&M",
     "due": null,
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1733,6 +1765,7 @@
     "kind": "essay",
     "school": "Texas A&M",
     "due": null,
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1787,6 +1820,7 @@
     "kind": "essay",
     "school": "Texas A&M",
     "due": null,
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1841,6 +1875,7 @@
     "kind": "essay",
     "school": "Texas A&M",
     "due": null,
+    "available_from": "2026-08-31",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -1895,6 +1930,7 @@
     "kind": "schoolwork",
     "school": "Physics",
     "due": "2026-08-31",
+    "available_from": "2026-08-31",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -1919,6 +1955,7 @@
     "kind": "schoolwork",
     "school": "Physics",
     "due": "2026-09-10",
+    "available_from": "2026-09-08",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -1943,6 +1980,7 @@
     "kind": "schoolwork",
     "school": "Physics",
     "due": "2026-09-11",
+    "available_from": "2026-08-26",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -1967,6 +2005,7 @@
     "kind": "test",
     "school": "Physics",
     "due": "2026-09-14",
+    "available_from": "2026-09-01",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -2021,6 +2060,7 @@
     "kind": "test",
     "school": "Physics",
     "due": "2026-09-15",
+    "available_from": "2026-09-01",
     "estimate_minutes": 120,
     "stages": [
       {
@@ -2075,6 +2115,7 @@
     "kind": "test",
     "school": "Econ",
     "due": "2026-09-01",
+    "available_from": "2026-08-26",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -2118,7 +2159,8 @@
     "title": "Econ - Read Mod 2.3 + worksheet",
     "kind": "schoolwork",
     "school": "Econ",
-    "due": "2026-09-01",
+    "due": "2026-09-02",
+    "available_from": "2026-09-01",
     "estimate_minutes": 20,
     "stages": [
       {
@@ -2142,7 +2184,8 @@
     "title": "Econ - Read Mod 2.4 + worksheet",
     "kind": "schoolwork",
     "school": "Econ",
-    "due": "2026-09-02",
+    "due": "2026-09-03",
+    "available_from": "2026-09-02",
     "estimate_minutes": 20,
     "stages": [
       {
@@ -2166,7 +2209,8 @@
     "title": "Econ - Read Mod 2.5",
     "kind": "schoolwork",
     "school": "Econ",
-    "due": "2026-09-03",
+    "due": "2026-09-04",
+    "available_from": "2026-09-03",
     "estimate_minutes": 20,
     "stages": [
       {
@@ -2190,7 +2234,8 @@
     "title": "Econ - Read Mod 2.6",
     "kind": "schoolwork",
     "school": "Econ",
-    "due": "2026-09-09",
+    "due": "2026-09-10",
+    "available_from": "2026-09-09",
     "estimate_minutes": 20,
     "stages": [
       {
@@ -2215,6 +2260,7 @@
     "kind": "test",
     "school": "Econ",
     "due": "2026-09-09",
+    "available_from": "2026-09-03",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -2259,6 +2305,7 @@
     "kind": "test",
     "school": "Econ",
     "due": "2026-09-14",
+    "available_from": "2026-09-01",
     "estimate_minutes": 90,
     "stages": [
       {
@@ -2313,6 +2360,7 @@
     "kind": "test",
     "school": "Econ",
     "due": "2026-09-15",
+    "available_from": "2026-09-01",
     "estimate_minutes": 150,
     "stages": [
       {
@@ -2366,7 +2414,8 @@
     "title": "Econ - Read Module 2.8B",
     "kind": "schoolwork",
     "school": "Econ",
-    "due": "2026-09-16",
+    "due": "2026-09-17",
+    "available_from": "2026-09-16",
     "estimate_minutes": 20,
     "stages": [
       {
@@ -2390,7 +2439,8 @@
     "title": "Econ - Read Module 2.8A",
     "kind": "schoolwork",
     "school": "Econ",
-    "due": "2026-09-17",
+    "due": "2026-09-18",
+    "available_from": "2026-09-17",
     "estimate_minutes": 20,
     "stages": [
       {
@@ -2415,6 +2465,7 @@
     "kind": "test",
     "school": "Econ",
     "due": "2026-09-21",
+    "available_from": "2026-09-17",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -2459,6 +2510,7 @@
     "kind": "test",
     "school": "Econ",
     "due": "2026-09-28",
+    "available_from": "2026-09-22",
     "estimate_minutes": 90,
     "stages": [
       {
@@ -2513,6 +2565,7 @@
     "kind": "schoolwork",
     "school": "Econ",
     "due": "2026-09-29",
+    "available_from": "2026-09-25",
     "estimate_minutes": 45,
     "stages": [
       {
@@ -2537,6 +2590,7 @@
     "kind": "test",
     "school": "Econ",
     "due": "2026-10-01",
+    "available_from": "2026-09-22",
     "estimate_minutes": 90,
     "stages": [
       {
@@ -2591,6 +2645,7 @@
     "kind": "test",
     "school": "Econ",
     "due": "2026-10-02",
+    "available_from": "2026-09-22",
     "estimate_minutes": 150,
     "stages": [
       {
@@ -2645,6 +2700,7 @@
     "kind": "schoolwork",
     "school": "Econ",
     "due": "2026-10-09",
+    "available_from": "2026-09-29",
     "estimate_minutes": 240,
     "stages": [
       {
@@ -2669,6 +2725,7 @@
     "kind": "admin",
     "school": "TOK",
     "due": "2026-09-09",
+    "available_from": "2026-09-09",
     "estimate_minutes": 15,
     "stages": [
       {
@@ -2693,6 +2750,7 @@
     "kind": "schoolwork",
     "school": "TOK",
     "due": "2026-09-15",
+    "available_from": "2026-09-02",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -2717,6 +2775,7 @@
     "kind": "schoolwork",
     "school": "TOK",
     "due": "2026-09-16",
+    "available_from": "2026-09-01",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -2741,6 +2800,7 @@
     "kind": "schoolwork",
     "school": "TOK",
     "due": "2026-09-24",
+    "available_from": "2026-09-15",
     "estimate_minutes": 300,
     "stages": [
       {
@@ -2765,6 +2825,7 @@
     "kind": "admin",
     "school": "TOK",
     "due": "2026-10-02",
+    "available_from": "2026-10-02",
     "estimate_minutes": 20,
     "stages": [
       {
@@ -2789,6 +2850,7 @@
     "kind": "schoolwork",
     "school": "TOK",
     "due": "2026-10-08",
+    "available_from": "2026-09-17",
     "estimate_minutes": 60,
     "stages": [
       {
@@ -2813,6 +2875,7 @@
     "kind": "schoolwork",
     "school": "TOK",
     "due": "2026-10-08",
+    "available_from": "2026-09-24",
     "estimate_minutes": 90,
     "stages": [
       {
@@ -2837,6 +2900,7 @@
     "kind": "schoolwork",
     "school": "TOK",
     "due": "2026-10-20",
+    "available_from": "2026-09-25",
     "estimate_minutes": 180,
     "stages": [
       {

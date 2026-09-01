@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from . import calibrate, daymodel, habits, icsio, planner
+from . import calibrate, clock, daymodel, habits, icsio, nlu, planner
 from .models import Block, Task, fmt_clock, minutes_of, parse_time, to_jsonable
 from .store import (
     DATA,
@@ -37,8 +37,11 @@ BAR = "-" * 62
 
 
 def _now_minutes() -> int:
-    now = dt.datetime.now()
-    return now.hour * 60 + now.minute
+    return clock.minutes_now(load_config())
+
+
+def _today() -> dt.date:
+    return clock.today(load_config())
 
 
 def _load_plan() -> dict[str, Any]:
@@ -122,7 +125,7 @@ def cmd_setup(args: argparse.Namespace) -> int:
         print("Config looks sane (sleep math included).")
 
     print()
-    print(daymodel.describe_day(dt.date.today() + dt.timedelta(days=1), cfg, load_state()))
+    print(daymodel.describe_day(_today() + dt.timedelta(days=1), cfg, load_state()))
     return 0
 
 
@@ -186,7 +189,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
         tasks,
         cfg,
         state,
-        today=dt.date.today(),
+        today=_today(),
         now_minutes=_now_minutes(),
         multipliers=calibrate.multipliers(),
         hour_scores=habits.follow_through_by_hour(),
@@ -237,7 +240,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
     print(f"\nWrote data/plan.json and data/plan.ics")
     if args.explain:
         print()
-        print(daymodel.describe_day(dt.date.today(), cfg, state))
+        print(daymodel.describe_day(_today(), cfg, state))
     return 0
 
 
@@ -266,7 +269,7 @@ def _print_day(day: dt.date, blocks: list[Block], cfg: dict, state: dict, show_a
 def cmd_today(args: argparse.Namespace) -> int:
     cfg, state = load_config(), load_state()
     plan_data = _load_plan()
-    day = dt.date.today() + dt.timedelta(days=args.offset)
+    day = _today() + dt.timedelta(days=args.offset)
     blocks = [b for b in _blocks_from_plan(plan_data) if b.date == day.isoformat()]
     _print_day(day, blocks, cfg, state)
 
@@ -295,7 +298,7 @@ def current_focus() -> dict[str, Any]:
     cfg, state = load_config(), load_state()
     plan_data = _load_plan()
     now = _now_minutes()
-    today = dt.date.today().isoformat()
+    today = _today().isoformat()
     blocks = [b for b in _blocks_from_plan(plan_data) if b.date == today]
 
     active = [b for b in blocks if b.start_minutes <= now < b.end_minutes]
@@ -309,7 +312,7 @@ def current_focus() -> dict[str, Any]:
     deadline = ""
     if soonest:
         due = soonest[0].due_date
-        days = (due - dt.date.today()).days if due else None
+        days = (due - _today()).days if due else None
         deadline = f"{soonest[0].title} due in {days}d" if days is not None else soonest[0].title
 
     if active:
@@ -363,7 +366,7 @@ def cmd_done(args: argparse.Namespace) -> int:
 
     stage = task.stages[idx]
     stage.status = "done"
-    stage.done_date = (args.date or dt.date.today().isoformat())
+    stage.done_date = (args.date or _today().isoformat())
     stage.actual_minutes = args.minutes
     save_tasks(tasks)
 
@@ -417,7 +420,7 @@ def cmd_status(args: argparse.Namespace) -> int:
     print(f"  essays: {len(done)}/{len(essays)} complete, {len(drafted)}/{len(essays)} drafted")
     target = cfg.get("target_date")
     if target:
-        left = (dt.date.fromisoformat(target) - dt.date.today()).days
+        left = (dt.date.fromisoformat(target) - _today()).days
         print(f"  target {target} ({left} days away)")
     if stats:
         print(f"  planned: {stats.get('blocks', 0)} blocks, {stats.get('late', 0)} late, "
@@ -457,7 +460,7 @@ def cmd_status(args: argparse.Namespace) -> int:
 
 def cmd_why(args: argparse.Namespace) -> int:
     cfg, state = load_config(), load_state()
-    day = dt.date.today() + dt.timedelta(days=args.offset)
+    day = _today() + dt.timedelta(days=args.offset)
     print(daymodel.describe_day(day, cfg, state))
     for w in validate_config(cfg):
         print(f"\n  ! {w}")
@@ -510,7 +513,7 @@ def cmd_usage(args: argparse.Namespace) -> int:
     hours = [int(h) for h in args.hours.split(",")] if args.hours else None
     record = {
         "ts": dt.datetime.now().isoformat(timespec="seconds"),
-        "date": args.date or dt.date.today().isoformat(),
+        "date": args.date or _today().isoformat(),
         "app": args.app,
         "minutes": args.minutes,
         "source": "manual",
@@ -551,6 +554,50 @@ def cmd_watch(args: argparse.Namespace) -> int:
     from .watch import run_watcher
 
     return run_watcher(dry_run=args.dry_run, once=args.once)
+
+
+def cmd_say(args: argparse.Namespace) -> int:
+    """Change the schedule by describing the change."""
+    cfg, tasks = load_config(), load_tasks()
+    text = " ".join(args.words).strip()
+    if not text:
+        print('Say something, e.g. calist say "done purdue essay 1, took 90 min"')
+        return 1
+
+    try:
+        command = nlu.parse(text, cfg, tasks, use_model=not args.no_model)
+    except nlu.ParseError as exc:
+        print(f"  {exc}")
+        return 1
+
+    plan_view = nlu.describe(command, tasks, cfg)
+    print(f"  {plan_view['summary']}")
+    if plan_view.get("choices"):
+        for c in plan_view["choices"]:
+            print(f"     - {c['id']:<30} {c['title']}")
+        print("  Name one of these and try again.")
+        return 1
+    if plan_view.get("error"):
+        return 1
+    if command.source == "model":
+        print("  (interpreted by the local model)")
+
+    if not args.yes:
+        reply = input("  Apply? [y/N] ").strip().lower()
+        if reply not in ("y", "yes"):
+            print("  Left alone.")
+            return 0
+
+    try:
+        result = nlu.apply(command)
+    except nlu.ParseError as exc:
+        print(f"  {exc}")
+        return 1
+
+    print(f"  {result.get('detail', 'done')}")
+    if "late" in result:
+        print(f"  replanned: {result['late']} late, {result['unplaceable']} with no room")
+    return 0
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -647,6 +694,12 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--host")
     s.add_argument("--port", type=int)
     s.set_defaults(func=cmd_serve)
+
+    s = sub.add_parser("say", help="change the schedule in plain language")
+    s.add_argument("words", nargs="+")
+    s.add_argument("--yes", "-y", action="store_true", help="skip the confirmation")
+    s.add_argument("--no-model", action="store_true", help="rules only, never call the model")
+    s.set_defaults(func=cmd_say)
 
     s = sub.add_parser("watch", help="run the distraction nudge watcher")
     s.add_argument("--dry-run", action="store_true", help="print detections, never nudge")

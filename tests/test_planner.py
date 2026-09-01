@@ -473,3 +473,55 @@ class TestReviewTiming(unittest.TestCase):
         parts = planner.build_parts([task], c, {})
         part = parts[task.id][0]
         self.assertEqual(part.latest_date, dt.date(2026, 9, 23))
+
+
+class TestWorkCannotStartBeforeItExists(unittest.TestCase):
+    """Homework assigned next week must not be scheduled today."""
+
+    def test_a_task_is_never_scheduled_before_available_from(self):
+        c = cfg()
+        task = make_task("Read Mod 2.8B", [], c, kind="schoolwork",
+                         due="2026-09-17", available_from="2026-09-16", estimate=20)
+        result = planner.plan([task], c, state(), today=TODAY)
+        mine = [b for b in result.blocks if b.task_id == task.id]
+        self.assertTrue(mine)
+        for b in mine:
+            self.assertGreaterEqual(b.date, "2026-09-16",
+                                    f"scheduled {b.date}, assigned 2026-09-16")
+
+    def test_review_never_precedes_the_material_being_taught(self):
+        c = cfg()
+        task = make_task("Unit 3 test", [], c, kind="test",
+                         due="2026-09-25", available_from="2026-09-14", estimate=240)
+        result = planner.plan([task], c, state(), today=TODAY)
+        for b in result.blocks:
+            if b.task_id == task.id:
+                self.assertGreaterEqual(b.date, "2026-09-14")
+
+    def test_available_from_composes_with_the_coach_gate(self):
+        """Whichever gate is later wins; neither cancels the other."""
+        c = cfg()
+        task = make_task("Late-start essay", [], c, kind="essay",
+                         due="2026-11-01", available_from="2026-09-20", estimate=120)
+        task.stages[0].status = "done"
+        task.stages[0].done_date = "2026-09-20"
+        result = planner.plan([task], c, state(), today=TODAY)
+        revise = next(b for b in result.blocks if b.stage_name == "revise-1")
+        # coach gate: draft done 09-20 + 1 day latency
+        self.assertGreaterEqual(revise.date, "2026-09-21")
+
+    def test_no_buffer_false_alarm_when_work_lands_on_its_due_date(self):
+        """Assigned and due the same day cannot honour buffer_days - not 'late'."""
+        c = cfg()
+        c["buffer_days"] = 2
+        task = make_task("Email the supervisor", [], c, kind="admin",
+                         due="2026-09-09", available_from="2026-09-09", estimate=15)
+        result = planner.plan([task], c, state(), today=TODAY)
+        self.assertEqual([l for l in result.late if l.task_id == task.id], [])
+
+    def test_tasks_without_available_from_are_unaffected(self):
+        c = cfg()
+        tasks = essays(3, dt.date(2026, 10, 20), c)
+        result = planner.plan(tasks, c, state(), today=TODAY)
+        self.assertTrue(result.blocks)
+        self.assertEqual(result.unplaceable, [])

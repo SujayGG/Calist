@@ -41,5 +41,13 @@ IB HL Physics, IB Economics SL, Theory of Knowledge. Two more calendars coming.
 
 ## Observations
 
+- 2026-08-31: He caught the planner scheduling Econ readings for units his class
+  had not started, and a lab write-up before the lab. Root cause: tasks had a due
+  date but no sense of when the work starts existing. Fixed with `available_from`.
+  Lesson: when adding schoolwork, always set when it becomes possible, not just
+  when it is due.
+- 2026-08-31: Wants to drive this by talking to it. Rules parser handles his usual
+  phrasing offline; local Ollama is the fallback. He chose confirm-before-apply.
+
 - 2026-08-31: First real plan. 64 tasks, ~154h of work. Every school finishes ahead
   of its deadline; the only late items are work due that same day or the next.

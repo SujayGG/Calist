@@ -35,6 +35,21 @@ python3 -m calist import data/sources/school.ics --as-anchors
 
 `--kind` is one of: `essay`, `schoolwork`, `test`, `build`, `admin`.
 
+```bash
+python3 -m calist say "done purdue essay 1, took 90 min"   # plain-language changes
+```
+
+## Two things that are easy to get wrong
+
+- **`available_from` is not optional.** Every school task needs the date the work
+  is assigned, the lab happens, or the material is taught. Without it the planner
+  schedules next week's homework today - it did exactly that, and he caught it.
+  When you add a task from a syllabus, set `available_from` as well as `due`.
+- **Dates come from `calist.clock`, never `date.today()`.** He is US Central and
+  the tool also runs in a UTC container; a plan built after 7pm his time would
+  otherwise be dated tomorrow. `clock.today(cfg)` derives local time from UTC and
+  handles US daylight saving.
+
 ## Turning what he says into commands
 
 - *"I have a Purdue essay about my major due the 20th, maybe two hours"*

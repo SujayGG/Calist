@@ -39,6 +39,29 @@ h1 span { color: var(--ink-3); font-weight: 400; }
 .countdown b { font-size: 26px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 .countdown small { color: var(--ink-3); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
 
+.say { display: flex; gap: 8px; margin-top: 18px; }
+.say input {
+  flex: 1; min-width: 0; font: inherit; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; padding: 9px 12px;
+}
+.say input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+.say input::placeholder { color: var(--ink-3); }
+
+.confirm {
+  margin-top: 10px; padding: 12px 14px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--surface-2);
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 14px;
+}
+.confirm .txt { flex: 1; min-width: 200px; }
+.confirm .txt b { font-weight: 600; }
+.confirm .src { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }
+.confirm.bad { border-color: color-mix(in srgb, var(--warn) 40%, transparent);
+  background: color-mix(in srgb, var(--warn) 8%, transparent); }
+.confirm.ok { border-color: color-mix(in srgb, var(--ok) 40%, transparent);
+  background: color-mix(in srgb, var(--ok) 8%, transparent); }
+.confirm ul { margin: 6px 0 0; padding-left: 18px; font-size: 13px; color: var(--ink-2); }
+
 .banner {
   margin: 16px 0; padding: 12px 14px; border-radius: var(--radius);
   border: 1px solid color-mix(in srgb, var(--warn) 35%, transparent);

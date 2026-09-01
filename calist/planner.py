@@ -200,6 +200,15 @@ def build_parts(tasks: list[Task], cfg: dict[str, Any], multipliers: dict[str, f
                 latest = due - dt.timedelta(days=slack + stage_lead_days(task, idx))
                 if stage.start_within_days is not None:
                     earliest = due - dt.timedelta(days=int(stage.start_within_days))
+                if task.available_from:
+                    avail = dt.date.fromisoformat(task.available_from[:10])
+                    if earliest is None or avail > earliest:
+                        earliest = avail
+                    # A deadline cannot demand work that starts before it exists:
+                    # homework assigned the day it is due gets no buffer, and
+                    # reporting that as "late" would be noise, not information.
+                    if latest < avail:
+                        latest = min(due, avail)
             sizes = split_minutes(minutes, cap, floor)
             for p, size in enumerate(sizes):
                 parts.append(
@@ -380,6 +389,10 @@ def plan(
     windows_by_kind = cfg.get("start_within_days", {})
     for tid in parts_by_task:
         task = by_id[tid]
+        if task.available_from:
+            available[tid] = max(
+                available[tid], dt.date.fromisoformat(task.available_from[:10])
+            )
         within = windows_by_kind.get(task.kind)
         due = task.due_date
         if within and due:

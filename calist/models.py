@@ -154,6 +154,10 @@ class Task:
     kind: str = "essay"
     school: str = ""
     due: str | None = None
+    # The day the work begins to exist: assigned in class, the lab happens, the
+    # material gets taught. Without this the planner happily pulls next week's
+    # homework into today.
+    available_from: str | None = None
     estimate_minutes: int = 120
     stages: list[Stage] = field(default_factory=list)
     priority: int = 0

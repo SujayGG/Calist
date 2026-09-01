@@ -255,5 +255,15 @@
   },
   "start_within_days": {
     "test": 12
+  },
+  "timezone": {
+    "standard_offset_hours": -6,
+    "us_dst": true
+  },
+  "nlu": {
+    "endpoint": "http://localhost:11434/v1/chat/completions",
+    "model": "qwen2.5:3b",
+    "api_key_env": "CALIST_LLM_KEY",
+    "timeout": 30
   }
 }

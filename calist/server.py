@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
 
-from . import calibrate, daymodel, habits
+from . import calibrate, clock, daymodel, habits
 from .models import Block, fmt_clock, parse_time, to_jsonable
 from .store import (
     PLAN_PATH,
@@ -99,7 +99,7 @@ def status_payload() -> dict[str, Any]:
     target = cfg.get("target_date")
     days_left = None
     if target:
-        days_left = (dt.date.fromisoformat(target) - dt.date.today()).days
+        days_left = (dt.date.fromisoformat(target) - clock.today(load_config())).days
 
     by_school: dict[str, dict[str, int]] = {}
     for t in essays:
@@ -152,7 +152,7 @@ def streak_days() -> int:
     done_days = {
         str(r.get("ts", ""))[:10] for r in read_jsonl(LOG_PATH) if r.get("type") == "done"
     }
-    streak, cursor = 0, dt.date.today()
+    streak, cursor = 0, clock.today(load_config())
     while cursor.isoformat() in done_days:
         streak += 1
         cursor -= dt.timedelta(days=1)
@@ -172,7 +172,7 @@ def mark_done(task_id: str, stage_name: str | None, minutes: int | None, hour: i
         return {"ok": False, "error": "no open stage"}
     stage = task.stages[idx]
     stage.status = "done"
-    stage.done_date = dt.date.today().isoformat()
+    stage.done_date = clock.today(load_config()).isoformat()
     stage.actual_minutes = minutes
     save_tasks(tasks)
     log_event("done", task_id=task.id, stage=stage.name, planned_minutes=stage.minutes,
@@ -185,10 +185,9 @@ def replan() -> dict[str, Any]:
     from .store import ICS_PATH, write_json
 
     cfg, state, tasks = load_config(), load_state(), load_tasks()
-    now = dt.datetime.now()
     result = planner.plan(
-        tasks, cfg, state, today=dt.date.today(),
-        now_minutes=now.hour * 60 + now.minute,
+        tasks, cfg, state, today=clock.today(cfg),
+        now_minutes=clock.minutes_now(cfg),
         multipliers=calibrate.multipliers(),
         hour_scores=habits.follow_through_by_hour(),
     )
@@ -278,11 +277,11 @@ class Handler(BaseHTTPRequestHandler):
 
         if route == "/api/today":
             offset = int((query.get("offset") or ["0"])[0])
-            self._json(day_payload(dt.date.today() + dt.timedelta(days=offset)))
+            self._json(day_payload(clock.today(load_config()) + dt.timedelta(days=offset)))
             return
 
         if route == "/api/week":
-            start = dt.date.today()
+            start = clock.today(load_config())
             self._json({"days": [day_payload(start + dt.timedelta(days=i)) for i in range(7)]})
             return
 
@@ -344,6 +343,41 @@ class Handler(BaseHTTPRequestHandler):
 
         if route == "/api/plan":
             self._json({"ok": True, "stats": replan().get("stats", {})})
+            return
+
+        if route == "/api/say":
+            from . import nlu
+            text = (body or {}).get("text", "") if isinstance(body, dict) else ""
+            use_model = bool((body or {}).get("use_model", True))
+            if not text.strip():
+                self._json({"ok": False, "error": "say something"}, 400)
+                return
+            try:
+                command = nlu.parse(text, use_model=use_model)
+                preview = nlu.describe(command)
+            except nlu.ParseError as exc:
+                self._json({"ok": False, "error": str(exc)})
+                return
+            self._json({"ok": not preview.get("error"), "preview": preview,
+                        "command": command.to_json(),
+                        "error": preview.get("error")})
+            return
+
+        if route == "/api/say/apply":
+            from . import nlu
+            payload = (body or {}).get("command") if isinstance(body, dict) else None
+            if not isinstance(payload, dict) or payload.get("action") not in nlu.ACTIONS:
+                self._json({"ok": False, "error": "no valid command to apply"}, 400)
+                return
+            command = nlu.Command(payload["action"], payload.get("params", {}),
+                                  payload.get("source", "rules"),
+                                  (body or {}).get("text", ""))
+            try:
+                result = nlu.apply(command)
+            except nlu.ParseError as exc:
+                self._json({"ok": False, "error": str(exc)})
+                return
+            self._json({"ok": True, "result": result})
             return
 
         self._json({"error": "unknown endpoint"}, 404)

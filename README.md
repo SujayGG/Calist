@@ -23,6 +23,42 @@ Then open http://127.0.0.1:8787.
 
 On macOS/Linux use `python3 -m calist` instead of `py -m calist`.
 
+## Talking to it
+
+```bash
+py -m calist say "done purdue essay 1, took 90 min"
+py -m calist say "add AP Bio unit 3 test on the 14th, 4 hours"
+py -m calist say "move stanford essay 1 to friday"
+py -m calist say "block sept 11 - sept 15"
+```
+
+It shows what it understood, you confirm, it applies and replans. The same box
+sits at the top of the dashboard.
+
+**Most commands never touch a model.** A rules parser handles the everyday
+phrasing instantly and offline. That matters because it keeps working when
+nothing else is running.
+
+**The optional local model** handles phrasing the rules miss. It is genuinely
+optional and completely free:
+
+```bash
+# one time
+winget install Ollama.Ollama     # or: brew install ollama
+ollama pull qwen2.5:3b           # ~2GB
+ollama serve
+```
+
+Point `nlu.endpoint` in `data/config.json` elsewhere and LM Studio, llama.cpp or
+a hosted endpoint work too - anything speaking the OpenAI chat format. Only
+Ollama is tested.
+
+Two rules keep this safe. The model **never writes to your data**: it returns a
+JSON command that is schema-validated here, shown to you as one sentence, then
+executed by ordinary code. And an ambiguous instruction is **reported, never
+guessed** - "purdue essay" matching three tasks asks which one rather than
+picking. `--no-model` forces the rules-only path; `--yes` skips the confirmation.
+
 ## Using it on another device
 
 The repo carries the schedule, so a second machine needs nothing special.

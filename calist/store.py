@@ -33,6 +33,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "owner": "Sujay",
     "target_date": "2026-09-22",
     "horizon_days": 130,
+    "timezone": {"standard_offset_hours": -6, "us_dst": True},
     "buffer_days": 2,
     "min_block_minutes": 25,
     "max_block_minutes": 90,
@@ -131,6 +132,12 @@ DEFAULT_CONFIG: dict[str, Any] = {
             "(?i)reddit",
             "(?i)twitter|(?i)\\bx\\.com",
         ],
+    },
+    "nlu": {
+        "endpoint": "http://localhost:11434/v1/chat/completions",
+        "model": "qwen2.5:3b",
+        "api_key_env": "CALIST_LLM_KEY",
+        "timeout": 30,
     },
     "server": {"host": "127.0.0.1", "port": 8787},
 }
