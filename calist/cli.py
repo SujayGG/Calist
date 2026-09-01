@@ -559,6 +559,20 @@ def cmd_watch(args: argparse.Namespace) -> int:
 def cmd_say(args: argparse.Namespace) -> int:
     """Change the schedule by describing the change."""
     cfg, tasks = load_config(), load_tasks()
+
+    if args.check:
+        result = nlu.check_model(cfg)
+        print(f"  endpoint : {result['endpoint']}")
+        print(f"  model    : {result['model']}")
+        if result["installed_models"]:
+            print(f"  installed: {', '.join(result['installed_models'])}")
+        print(f"  status   : {'CONNECTED' if result['ok'] else 'NOT CONNECTED'}")
+        print(f"  {result['detail']}")
+        if not result["ok"]:
+            print("\n  The rules parser still works without it:")
+            print('     py -m calist say --no-model "done purdue essay 1, took 90 min"')
+        return 0 if result["ok"] else 1
+
     text = " ".join(args.words).strip()
     if not text:
         print('Say something, e.g. calist say "done purdue essay 1, took 90 min"')
@@ -570,13 +584,19 @@ def cmd_say(args: argparse.Namespace) -> int:
         print(f"  {exc}")
         return 1
 
-    plan_view = nlu.describe(command, tasks, cfg)
+    plan_view = nlu.describe(command, tasks, cfg, allow_all=args.all)
     print(f"  {plan_view['summary']}")
+    if plan_view.get("error") == "ambiguous":
+        for c in plan_view["choices"]:
+            print(f"     - {c['id']:<30} {c['title']}")
+        if plan_view.get("bulk_possible"):
+            print("  Name one of these, or add --all to apply to all of them.")
+        else:
+            print("  Name one of these and try again.")
+        return 1
     if plan_view.get("choices"):
         for c in plan_view["choices"]:
             print(f"     - {c['id']:<30} {c['title']}")
-        print("  Name one of these and try again.")
-        return 1
     if plan_view.get("error"):
         return 1
     if command.source == "model":
@@ -696,9 +716,13 @@ def build_parser() -> argparse.ArgumentParser:
     s.set_defaults(func=cmd_serve)
 
     s = sub.add_parser("say", help="change the schedule in plain language")
-    s.add_argument("words", nargs="+")
+    s.add_argument("words", nargs="*")
     s.add_argument("--yes", "-y", action="store_true", help="skip the confirmation")
     s.add_argument("--no-model", action="store_true", help="rules only, never call the model")
+    s.add_argument("--all", action="store_true",
+                   help="apply to every matching task, not just one")
+    s.add_argument("--check", action="store_true",
+                   help="test the connection to the local model and exit")
     s.set_defaults(func=cmd_say)
 
     s = sub.add_parser("watch", help="run the distraction nudge watcher")

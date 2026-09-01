@@ -43,11 +43,13 @@ nothing else is running.
 optional and completely free:
 
 ```bash
-# one time
 winget install Ollama.Ollama     # or: brew install ollama
 ollama pull qwen2.5:3b           # ~2GB
-ollama serve
 ```
+
+On Windows and macOS the installer runs Ollama for you - `ollama serve` is only
+needed on headless Linux, and elsewhere it fails because the port is already
+taken. Check the whole chain with `calist say --check`.
 
 Point `nlu.endpoint` in `data/config.json` elsewhere and LM Studio, llama.cpp or
 a hosted endpoint work too - anything speaking the OpenAI chat format. Only
@@ -57,7 +59,9 @@ Two rules keep this safe. The model **never writes to your data**: it returns a
 JSON command that is schema-validated here, shown to you as one sentence, then
 executed by ordinary code. And an ambiguous instruction is **reported, never
 guessed** - "purdue essay" matching three tasks asks which one rather than
-picking. `--no-model` forces the rules-only path; `--yes` skips the confirmation.
+picking. `--no-model` forces the rules-only path, `--yes` skips the confirmation,
+`--all` applies to every matching task ("push my rice essays to next week"), and
+`--check` tests the model connection.
 
 ## Using it on another device
 

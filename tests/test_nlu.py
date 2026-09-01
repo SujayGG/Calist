@@ -247,3 +247,53 @@ class TestPlatformPortability(unittest.TestCase):
             summary = nlu.describe(cmd, tasks, c)["summary"]
             self.assertTrue(summary.strip(), text)
             self.assertTrue(summary.isascii(), f"non-ascii summary for {text!r}")
+
+
+class TestBulkAndCheck(unittest.TestCase):
+    """'push my rice essays to next week' means all of them."""
+
+    def setUp(self):
+        self.c = cfg()
+        self.tasks = sample_tasks(self.c)
+
+    def test_plural_is_ambiguous_without_all(self):
+        cmd = nlu.parse_rules("move purdue essays to friday", TODAY, self.tasks)
+        view = nlu.describe(cmd, self.tasks, self.c)
+        self.assertEqual(view["error"], "ambiguous")
+        self.assertTrue(view.get("bulk_possible"), "should offer --all for a move")
+
+    def test_all_targets_every_match(self):
+        cmd = nlu.parse_rules("move purdue essays to friday", TODAY, self.tasks)
+        view = nlu.describe(cmd, self.tasks, self.c, allow_all=True)
+        self.assertNotIn("error", view)
+        self.assertEqual(len(cmd.params["task_ids"]), 3)
+        self.assertIn("3 tasks", view["summary"])
+
+    def test_all_never_applies_to_logging_time(self):
+        """'done' with one duration across several tasks is meaningless."""
+        cmd = nlu.parse_rules("done purdue essays, took 90 min", TODAY, self.tasks)
+        view = nlu.describe(cmd, self.tasks, self.c, allow_all=True)
+        self.assertEqual(view["error"], "ambiguous")
+        self.assertFalse(view.get("bulk_possible"))
+
+    def test_a_single_match_is_unaffected_by_all(self):
+        cmd = nlu.parse_rules("move purdue essay 2 to friday", TODAY, self.tasks)
+        view = nlu.describe(cmd, self.tasks, self.c, allow_all=True)
+        self.assertNotIn("task_ids", cmd.params)
+        self.assertIn("Purdue - essay 2", view["summary"])
+
+    def test_check_reports_cleanly_when_nothing_is_listening(self):
+        c = cfg()
+        c["nlu"] = {"endpoint": "http://127.0.0.1:9/v1/chat/completions", "model": "none"}
+        result = nlu.check_model(c)
+        self.assertFalse(result["ok"])
+        self.assertTrue(result["detail"])
+        self.assertIn("endpoint", result)
+
+    def test_check_never_tells_windows_users_to_run_ollama_serve(self):
+        """That advice is what produced the port-in-use error in the first place."""
+        c = cfg()
+        c["nlu"] = {"endpoint": "http://127.0.0.1:9/v1/chat/completions", "model": "none"}
+        detail = nlu.check_model(c)["detail"].lower()
+        self.assertIn("ollama list", detail)
+        self.assertNotIn("try: ollama serve", detail)

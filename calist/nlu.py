@@ -339,8 +339,10 @@ def call_model(text: str, cfg: dict[str, Any], today: dt.date) -> dict[str, Any]
             data = json.loads(r.read().decode())
     except urllib.error.URLError as e:
         raise ParseError(
-            f"Could not reach the model at {endpoint} ({e.reason}). "
-            "Is Ollama running? Try: ollama serve"
+            f"Could not reach the model at {endpoint} ({e.reason}).\n"
+            "  On Windows and macOS the installer runs Ollama for you - check with "
+            "'ollama list'.\n"
+            "  If that also fails, reopen the Ollama app (on Linux: ollama serve)."
         ) from e
     except (ValueError, KeyError) as e:
         raise ParseError(f"The model returned something unreadable: {e}") from e
@@ -370,6 +372,54 @@ def extract_json(content: str) -> dict[str, Any]:
                 except json.JSONDecodeError as e:
                     raise ParseError(f"The model's JSON was malformed: {e}") from e
     raise ParseError("The model's JSON was never closed.")
+
+
+def check_model(cfg: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Prove the model is actually wired up, by using the real code path.
+
+    Anything less - pinging a port, reading config - can pass while the thing
+    that matters still fails, so this sends a genuine request and parses the
+    reply exactly as a command would.
+    """
+    import time
+
+    cfg = cfg or load_config()
+    nlu_cfg = cfg.get("nlu", {}) or {}
+    out: dict[str, Any] = {
+        "endpoint": nlu_cfg.get("endpoint"),
+        "model": nlu_cfg.get("model"),
+        "ok": False,
+        "detail": "",
+        "installed_models": [],
+    }
+    if not out["endpoint"]:
+        out["detail"] = "No endpoint set. Add nlu.endpoint to data/config.json."
+        return out
+
+    # Best effort: Ollama lists what is actually pulled, which catches the
+    # common "connected, but that model was never downloaded" case.
+    base = out["endpoint"].split("/v1/")[0].rstrip("/")
+    try:
+        with urllib.request.urlopen(base + "/api/tags", timeout=5) as r:
+            tags = json.loads(r.read().decode())
+        out["installed_models"] = sorted(m.get("name", "") for m in tags.get("models", []))
+    except Exception:
+        pass
+
+    started = time.time()
+    try:
+        obj = call_model("replan", cfg, dt.date.today())
+    except ParseError as exc:
+        out["detail"] = str(exc)
+        if out["installed_models"] and out["model"] not in out["installed_models"]:
+            out["detail"] += (f"\n  The model '{out['model']}' is not installed. "
+                              f"Run: ollama pull {out['model']}")
+        return out
+
+    out["ok"] = True
+    out["seconds"] = round(time.time() - started, 1)
+    out["detail"] = f"replied in {out['seconds']}s with {json.dumps(obj)[:60]}"
+    return out
 
 
 def validate(obj: dict[str, Any], today: dt.date) -> Command:
@@ -467,8 +517,12 @@ def parse(text: str, cfg: dict[str, Any] | None = None,
 
 
 # ---------------------------------------------------------------- describe
+BULK_ACTIONS = {"move", "skip"}
+
+
 def describe(cmd: Command, tasks: list[Task] | None = None,
-             cfg: dict[str, Any] | None = None) -> dict[str, Any]:
+             cfg: dict[str, Any] | None = None,
+             allow_all: bool = False) -> dict[str, Any]:
     """One plain sentence for the confirmation line, plus any ambiguity."""
     tasks = tasks if tasks is not None else load_tasks()
     cfg = cfg or load_config()
@@ -494,9 +548,20 @@ def describe(cmd: Command, tasks: list[Task] | None = None,
             out["error"] = "no match"
             return out
         if len(matches) > 1:
+            if allow_all and cmd.action in BULK_ACTIONS:
+                p["task_ids"] = [t.id for t in matches]
+                label = f"{len(matches)} tasks matching '{p.get('task')}'"
+                out["summary"] = (
+                    f"Do not work on {label} before {pretty(p['to'])}"
+                    if cmd.action == "move" else f"Log a skip for {label}"
+                )
+                out["choices"] = [{"id": t.id, "title": t.title} for t in matches]
+                return out
             out["summary"] = f"'{p.get('task')}' matches {len(matches)} tasks - which one?"
             out["choices"] = [{"id": t.id, "title": t.title} for t in matches[:8]]
             out["error"] = "ambiguous"
+            if cmd.action in BULK_ACTIONS:
+                out["bulk_possible"] = True
             return out
         task = matches[0]
         p["task_id"] = task.id
@@ -554,6 +619,33 @@ def apply(cmd: Command, replan: bool = True) -> dict[str, Any]:
         changed["detail"] = f"added {task.title}"
 
     elif cmd.action in ("done", "skip", "move"):
+        ids = p.get("task_ids")
+        if ids:
+            if cmd.action not in BULK_ACTIONS:
+                raise ParseError(f"'{cmd.action}' works on one task at a time.")
+            touched = []
+            for tid in ids:
+                task = next((t for t in tasks if t.id == tid), None)
+                if not task:
+                    continue
+                if cmd.action == "move":
+                    task.available_from = p["to"]
+                    if task.due and task.due < p["to"]:
+                        task.due = p["to"]
+                else:
+                    log_event("skip", task_id=task.id, reason=p.get("reason", ""),
+                              scheduled_hour=clock.now(cfg).hour, via="say")
+                touched.append(task.title)
+            if cmd.action == "move":
+                save_tasks(tasks)
+            changed["detail"] = f"{len(touched)} tasks updated: " + ", ".join(touched[:4])
+            if len(touched) > 4:
+                changed["detail"] += f" and {len(touched) - 4} more"
+            log_event("say", command=cmd.to_json(), text=cmd.text)
+            if replan:
+                changed.update(_replan_now(cfg, today))
+            return changed
+
         tid = p.get("task_id")
         if not tid:
             matches = resolve_task(p.get("task", ""), tasks)
@@ -607,18 +699,20 @@ def apply(cmd: Command, replan: bool = True) -> dict[str, Any]:
     log_event("say", command=cmd.to_json(), text=cmd.text)
 
     if replan:
-        from . import calibrate, habits, icsio, planner
-        from .store import ICS_PATH, PLAN_PATH, write_json
-        from .models import to_jsonable
-
-        result = planner.plan(load_tasks(), load_config(), __import__(
-            "calist.store", fromlist=["load_state"]).load_state(),
-            today=today, now_minutes=clock.minutes_now(cfg),
-            multipliers=calibrate.multipliers(),
-            hour_scores=habits.follow_through_by_hour())
-        write_json(PLAN_PATH, to_jsonable(result))
-        icsio.write_ics(result.blocks, ICS_PATH, name="Calist")
-        changed["stats"] = result.stats
-        changed["late"] = len(result.late)
-        changed["unplaceable"] = len(result.unplaceable)
+        changed.update(_replan_now(cfg, today))
     return changed
+
+
+def _replan_now(cfg: dict[str, Any], today: dt.date) -> dict[str, Any]:
+    from . import calibrate, habits, icsio, planner
+    from .models import to_jsonable
+    from .store import ICS_PATH, PLAN_PATH, load_state, write_json
+
+    result = planner.plan(load_tasks(), load_config(), load_state(),
+                          today=today, now_minutes=clock.minutes_now(cfg),
+                          multipliers=calibrate.multipliers(),
+                          hour_scores=habits.follow_through_by_hour())
+    write_json(PLAN_PATH, to_jsonable(result))
+    icsio.write_ics(result.blocks, ICS_PATH, name="Calist")
+    return {"stats": result.stats, "late": len(result.late),
+            "unplaceable": len(result.unplaceable)}

@@ -102,9 +102,18 @@ Full command list: `py -m calist --help`. The ones worth knowing:
 
 Your tasks and plan live in the repo, so:
 
+Before you start:
+
 ```bat
-git pull                                  :: before you start
-git add -A && git commit -m "progress" && git push    :: when you finish
+git pull
+```
+
+When you finish:
+
+```bat
+git add -A
+git commit -m "progress"
+git push
 ```
 
 Skip this and the two machines will disagree about what you have done.
@@ -131,15 +140,23 @@ Only needed for phrasing the built-in parser misses. Everything in Step 5 works
 without it.
 
 1. Install **Ollama** from https://ollama.com/download/windows
-2. In `cmd`:
+2. Download the model (about 2 GB):
    ```bat
    ollama pull qwen2.5:3b
-   ollama serve
    ```
 
-About 2 GB, runs entirely on your PC, no account, no key, no limits. Calist finds
-it automatically at `http://localhost:11434`. If it is not running you get a plain
-message saying so, never a crash.
+**Do not run `ollama serve`.** The Windows installer already runs Ollama in the
+background, so that command fails with *"Only one usage of each socket address..."*
+- which looks alarming but just means it is already working.
+
+Confirm the whole chain in one step:
+
+```bat
+py -m calist say --check
+```
+
+That sends a real request through the same code path a command uses, and prints
+the endpoint, the model, and whether it answered. `CONNECTED` means you are done.
 
 Use `py -m calist say --no-model "..."` to force the offline parser.
 
@@ -152,6 +169,8 @@ Use `py -m calist say --no-model "..."` to force the offline parser.
 | `py is not recognized` | Python installer → Modify → tick "Add python.exe to PATH" |
 | `No module named calist` | You are in the wrong folder. `cd %USERPROFILE%\Documents\Calist` |
 | Dashboard won't load | Is the `serve` window still open? Use `127.0.0.1:8787`, not `localhost:8787`, if your browser is fussy |
-| `say` says it can't reach the model | Expected if Ollama isn't running. Add `--no-model`, or start `ollama serve` |
+| `say` says it can't reach the model | Run `py -m calist say --check`. If Ollama is not running, reopen the Ollama app from the Start menu. `--no-model` works meanwhile |
+| `ollama serve` says the address is already in use | Ollama is already running - that is the background service the installer set up. Skip the command; run `py -m calist say --check` |
+| A command matches several tasks | Name one of the ids it lists, or add `--all` to apply to every match |
 | Nudge never appears | Run `py -m calist watch --dry-run` first and check it detects the app at all |
 | Dates look wrong by one day | Check `timezone` in `data\config.json`; it should be `standard_offset_hours: -6` |
