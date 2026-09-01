@@ -203,3 +203,47 @@ class TestModelSafety(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestPlatformPortability(unittest.TestCase):
+    """`calist say` crashed on Windows: %-d is a glibc-only strftime flag."""
+
+    def test_fmt_day_needs_no_platform_specific_flag(self):
+        from calist.models import fmt_day
+        self.assertEqual(fmt_day(dt.date(2026, 9, 4)), "Fri Sep 4")
+        self.assertEqual(fmt_day(dt.date(2026, 9, 14)), "Mon Sep 14")
+
+    def test_no_glibc_only_format_flags_in_the_package(self):
+        import pathlib
+        import re
+        root = pathlib.Path(__file__).resolve().parent.parent / "calist"
+        offenders = []
+        for path in root.rglob("*.py"):
+            for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+                if line.lstrip().startswith("#") or '"""' in line:
+                    continue
+                if re.search(r'strftime\([^)]*%[-#]', line):
+                    offenders.append(f"{path.name}:{n}")
+        self.assertEqual(offenders, [], "platform-specific strftime flags")
+
+    def test_console_output_stays_ascii(self):
+        """Windows consoles are not always UTF-8; keep printed text plain."""
+        import pathlib
+        src = (pathlib.Path(__file__).resolve().parent.parent
+               / "calist" / "nlu.py").read_text(encoding="utf-8")
+        bad = sorted({c for c in src if ord(c) > 127})
+        self.assertEqual(bad, [], f"non-ASCII in nlu.py: {bad}")
+
+    def test_every_command_renders_a_summary(self):
+        """Each describe() branch that formats a date must survive on Windows."""
+        c = cfg()
+        tasks = sample_tasks(c)
+        for text in ("add Rice supplement due sept 20, 2 hours",
+                     "move stanford essay 1 to friday",
+                     "block sept 11 - sept 15",
+                     "done purdue essay 1, took 90 min",
+                     "replan"):
+            cmd = nlu.parse_rules(text, TODAY, tasks)
+            summary = nlu.describe(cmd, tasks, c)["summary"]
+            self.assertTrue(summary.strip(), text)
+            self.assertTrue(summary.isascii(), f"non-ascii summary for {text!r}")

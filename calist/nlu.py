@@ -25,7 +25,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from . import clock
-from .models import Task
+from .models import Task, fmt_day
 from .store import load_config, load_tasks, save_config, save_tasks, log_event
 from .tasking import DEFAULT_ESTIMATES, make_task
 
@@ -477,10 +477,10 @@ def describe(cmd: Command, tasks: list[Task] | None = None,
                            "params": p, "choices": []}
 
     def pretty(d):
-        return dt.date.fromisoformat(d).strftime("%a %b %-d")
+        return fmt_day(dt.date.fromisoformat(d))
 
     if cmd.action == "add":
-        bits = [f"Add {p['kind']} “{p['title']}”"]
+        bits = [f"Add {p['kind']} '{p['title']}'"]
         if p.get("due"):
             bits.append("due " + pretty(p["due"]))
         bits.append(f"({p['estimate']} min)")
@@ -490,11 +490,11 @@ def describe(cmd: Command, tasks: list[Task] | None = None,
     if cmd.action in ("done", "skip", "move"):
         matches = resolve_task(p.get("task", ""), tasks)
         if not matches:
-            out["summary"] = f"No open task matches “{p.get('task')}”."
+            out["summary"] = f"No open task matches '{p.get('task')}'."
             out["error"] = "no match"
             return out
         if len(matches) > 1:
-            out["summary"] = f"“{p.get('task')}” matches {len(matches)} tasks - which one?"
+            out["summary"] = f"'{p.get('task')}' matches {len(matches)} tasks - which one?"
             out["choices"] = [{"id": t.id, "title": t.title} for t in matches[:8]]
             out["error"] = "ambiguous"
             return out
@@ -514,19 +514,19 @@ def describe(cmd: Command, tasks: list[Task] | None = None,
     if cmd.action == "blackout":
         tiers = {1: "schoolwork", 2: "essays", 3: "creative time"}
         what = ", ".join(tiers.get(t, str(t)) for t in p.get("tiers", [2]))
-        span = pretty(p["from"]) + (f" – {pretty(p['to'])}" if p["to"] != p["from"] else "")
+        span = pretty(p["from"]) + (f" - {pretty(p['to'])}" if p["to"] != p["from"] else "")
         out["summary"] = f"Keep {span} clear of {what}"
         return out
 
     if cmd.action == "anchor":
         anchor = next((a for a in cfg.get("anchors", []) if a.get("id") == p["id"]), None)
         if not anchor:
-            out["summary"] = f"No commitment called “{p['id']}”."
+            out["summary"] = f"No commitment called '{p['id']}'."
             out["error"] = "no match"
             return out
         changes = []
         if p.get("start") or p.get("end"):
-            changes.append(f"{p.get('start', anchor['start'])}–{p.get('end', anchor['end'])}")
+            changes.append(f"{p.get('start', anchor['start'])}-{p.get('end', anchor['end'])}")
         if p.get("days"):
             changes.append("on " + ", ".join(p["days"]))
         out["summary"] = f"Change {anchor['name']} to " + " ".join(changes)

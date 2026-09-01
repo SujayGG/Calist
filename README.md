@@ -72,6 +72,8 @@ Every block lands in your normal calendar, on your laptop and your phone. Re-imp
 after a replan to refresh. Times are floating, so they display in your local zone
 with no timezone setup.
 
+**On Windows** see [docs/WINDOWS.md](docs/WINDOWS.md) for the click-by-click version.
+
 **Want the full dashboard:**
 ```bash
 git clone https://github.com/SujayGG/Calist.git

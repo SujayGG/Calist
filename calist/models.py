@@ -54,6 +54,15 @@ def fmt_time(t: dt.time) -> str:
     return f"{t.hour:02d}:{t.minute:02d}"
 
 
+def fmt_day(d: dt.date) -> str:
+    """'Fri Sep 4' on every platform.
+
+    %-d is a glibc extension and %#d is Windows-only, so strftime cannot render
+    an unpadded day portably. Building the number from d.day sidesteps it.
+    """
+    return f"{d.strftime('%a %b')} {d.day}"
+
+
 def fmt_clock(t: dt.time) -> str:
     """Human 12-hour clock, e.g. 3:15pm."""
     hour = t.hour % 12 or 12
