@@ -106,7 +106,12 @@ Before you start:
 
 ```bat
 git pull
+py -m calist plan
 ```
+
+The second line rebuilds your schedule and calendar file from whatever you pulled.
+They are deliberately not stored in Git — they change every time you run anything,
+so tracking them would make every `git pull` conflict.
 
 When you finish:
 
@@ -170,6 +175,8 @@ Use `py -m calist say --no-model "..."` to force the offline parser.
 | `No module named calist` | You are in the wrong folder. `cd %USERPROFILE%\Documents\Calist` |
 | Dashboard won't load | Is the `serve` window still open? Use `127.0.0.1:8787`, not `localhost:8787`, if your browser is fussy |
 | `say` says it can't reach the model | Run `py -m calist say --check`. If Ollama is not running, reopen the Ollama app from the Start menu. `--no-model` works meanwhile |
+| `ollama` is not recognized | Your terminal was open before Ollama was installed, so it has a stale PATH. Close it and open a new one. If it still fails, Ollama is not installed — get it from https://ollama.com/download/windows |
+| `git pull` says local changes would be overwritten | You are on an old version that tracked generated files. Run `git checkout -- data/plan.json data/plan.ics` then pull again. It will not happen after that |
 | `ollama serve` says the address is already in use | Ollama is already running - that is the background service the installer set up. Skip the command; run `py -m calist say --check` |
 | A command matches several tasks | Name one of the ids it lists, or add `--all` to apply to every match |
 | Nudge never appears | Run `py -m calist watch --dry-run` first and check it detects the app at all |

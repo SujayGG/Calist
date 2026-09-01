@@ -1,6 +1,8 @@
-# Generated, but committed on purpose: this repo is how the schedule reaches
-# his other devices. plan.ics imports straight into Google Calendar and
-# plan.json lets the dashboard run right after a clone, with no replan.
+# Generated on every plan/serve/done/say. Tracking these guaranteed a merge
+# conflict on every single `git pull`, which is exactly what happened. Rebuild
+# them in one second with: calist plan
+data/plan.json
+data/plan.ics
 data/state.json
 
 # Activity logs - machine-local, can get noisy

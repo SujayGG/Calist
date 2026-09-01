@@ -67,10 +67,10 @@ picking. `--no-model` forces the rules-only path, `--yes` skips the confirmation
 
 The repo carries the schedule, so a second machine needs nothing special.
 
-**Just want to see the calendar (2 minutes, no install):**
-1. On GitHub open `data/plan.ics` and click **Download raw file**.
+**Get it into Google Calendar:**
+1. Run `calist plan` - it writes `data/plan.ics`.
 2. Google Calendar -> gear -> **Settings** -> **Import & export** -> **Import**,
-   pick the file, choose a calendar, import.
+   pick that file, choose a calendar, import.
 
 Every block lands in your normal calendar, on your laptop and your phone. Re-import
 after a replan to refresh. Times are floating, so they display in your local zone
@@ -88,10 +88,11 @@ Then open http://127.0.0.1:8787. Needs Python 3.9 or newer — already present o
 macOS and most Linux; on Windows install from python.org and use `py` in place of
 `python3`. There is nothing to `pip install`.
 
-**Keeping two machines in sync.** `tasks.json`, `config.json` and the generated
-plan are all committed, so:
+**Keeping two machines in sync.** `tasks.json` and `config.json` are committed.
+The generated plan is not: it rewrites on every command, so tracking it made every
+`git pull` conflict.
 ```bash
-git pull            # before you start working
+git pull && calist plan     # before you start working
 git add -A && git commit -m "log progress" && git push   # when you finish
 ```
 Skip that and the two machines will disagree about what you have done.
